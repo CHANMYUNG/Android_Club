@@ -14,7 +14,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00ff0000"
-            android:src="@drawable/menu" />
+            android:src="@drawable/home"
+            android:id="@+id/goMain"/>
 
         <ImageView
             android:layout_width="wrap_content"
