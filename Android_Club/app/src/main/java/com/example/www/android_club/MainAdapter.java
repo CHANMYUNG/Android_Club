@@ -19,7 +19,7 @@ import java.util.Objects;
  * Created by 윤정현 on 2017-04-05.
  */
 
-public class MainAdapter extends ArrayAdapter<MainData> {
+public class  MainAdapter extends ArrayAdapter<MainData> {
     private ArrayList<MainData> items=new ArrayList<>();
     Context context;
     int layout;
@@ -38,6 +38,10 @@ public class MainAdapter extends ArrayAdapter<MainData> {
     public long getItemId(int position){
         return  position;
     }
+
+    /*public Object getItem(int position){
+        return items.get(position);
+    }*/
 
     public View getView(int position, View convertView, ViewGroup parent){
         View row=convertView;
