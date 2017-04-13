@@ -4,10 +4,9 @@
     android:layout_height="match_parent">
     <ImageView
         android:id="@+id/clubimage"
-        android:layout_width="250dp"
+        android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:background="@color/colorPrimary"
-        android:src="@drawable/aa"/>
+        android:src="@drawable/home"/>
     <TextView
         android:id="@+id/clubtext"
         android:layout_width="wrap_content"
@@ -15,6 +14,6 @@
         android:textSize="20dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@color/colorPrimaryDark"/>
+        />
 
 </LinearLayout>

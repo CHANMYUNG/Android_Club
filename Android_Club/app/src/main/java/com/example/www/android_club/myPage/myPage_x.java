@@ -1,12 +1,10 @@
-package com.example.www.android_club.mypage;
+package com.example.www.android_club.myPage;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.example.www.android_club.MainActivity;
 import com.example.www.android_club.R;
@@ -15,7 +13,7 @@ import com.example.www.android_club.R;
  * Created by mac on 2017. 4. 12..
  */
 
-public class Mypage extends AppCompatActivity {
+public class myPage_x extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

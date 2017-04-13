@@ -74,8 +74,7 @@
             android:layout_marginRight="30dp"
             android:onClick="info_buttonClicked"
             android:padding="0dp"
-            android:src="@drawable/clubinfo_member"
-            />
+            android:src="@drawable/clubinfo_member" />
     </LinearLayout>
 
 </LinearLayout>

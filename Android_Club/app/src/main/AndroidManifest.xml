@@ -15,12 +15,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mypage.Mypage">
+        <activity android:name=".myPage.myPage_x">
 
         </activity>
-        <activity android:name=".clubInfo.clubInfo">
+        <activity android:name=".clubInfo.ClubInfo">
 
         </activity>
+        <activity android:name=".signUp.SignUpActivity">
+
+        </activity>
+
+        <activity android:name=".myPage.myPage_o">
+
+        </activity>
+        <activity android:name=".memberList.memberListActivity">
+
+        </activity>
+
+
     </application>
 
 </manifest>

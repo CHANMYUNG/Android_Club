@@ -11,11 +11,11 @@
         android:orientation="horizontal">
 
         <ImageButton
+            android:id="@+id/goMain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00ff0000"
-            android:src="@drawable/home"
-            android:id="@+id/goMain"/>
+            android:src="@drawable/home" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -36,8 +36,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/clubName"
@@ -45,14 +45,15 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"
             android:text="Club"
-            android:textSize="50dp"
-            android:textColor="#2F3335"/>
+            android:textColor="#2F3335"
+            android:textSize="50dp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
+        android:orientation="vertical"
         android:layout_marginTop="5dp">
 
         <TextView
@@ -60,6 +61,35 @@
             android:layout_height="wrap_content"
             android:textSize="10dp"
             android:background="#2D3E50"/>
+
+
+        <CalendarView
+            android:id="@+id/calendar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusedMonthDateColor="#000000"
+            android:showWeekNumber="false"
+            android:unfocusedMonthDateColor="#FFFFFF" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/next_memberList"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:text="회원 목록"/>
+
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:text="일정"/>
+
+        
+
     </LinearLayout>
 
 </LinearLayout>
