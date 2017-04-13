@@ -11,11 +11,28 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.www.android_club.MainActivity"
     android:background="#98CDC5">
-    
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="동아리 검색"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/user"
+            android:background="#98CDC5"
+            android:id="@+id/mypageButton"/>
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:hint="동아리 검색"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="검색"/>
+    </LinearLayout>
+
 
 
     <LinearLayout

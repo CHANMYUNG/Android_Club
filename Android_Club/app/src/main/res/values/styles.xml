@@ -5,10 +5,14 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#98CDC5</item>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
 =======
         <item name="colorPrimaryDark">#C3C3C3</item>
 >>>>>>> refs/remotes/origin/master
+=======
+        <item name="colorPrimaryDark">#C3C3C3</item>
+>>>>>>> origin/master
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
