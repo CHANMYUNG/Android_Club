@@ -11,7 +11,8 @@ import com.example.www.android_club.R;
  * Created by mac on 2017. 4. 12..
  */
 
-public class ClubInfo extends AppCompatActivity{
+
+public class clubInfo extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
