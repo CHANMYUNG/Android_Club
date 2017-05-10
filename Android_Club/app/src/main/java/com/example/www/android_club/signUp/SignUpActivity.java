@@ -41,11 +41,18 @@ public class SignUpActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             switch (response) {
+
+                                case "Database Connection Error":
+                                    Toast.makeText(getApplicationContext(), "The name already exists...", Toast.LENGTH_LONG).show();
+                                    break;
+
                                 case "Succeed":
                                     Toast.makeText(getApplicationContext(), "Login Succeed!!!", Toast.LENGTH_LONG).show();
                                     break;
-                                case "The name already exists":
-                                    Toast.makeText(getApplicationContext(), "The name already exists...", Toast.LENGTH_LONG).show();
+
+
+                                case "Failed":
+                                    Toast.makeText(getApplicationContext(), "Login Failed...", Toast.LENGTH_LONG).show();
                                     break;
                             }
                         } catch (Exception e) {
@@ -56,7 +63,8 @@ public class SignUpActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "Error Occured", Toast.LENGTH_LONG).show();
+                        error.printStackTrace();
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
                     }
                 }
         ) {
