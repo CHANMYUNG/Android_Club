@@ -22,10 +22,11 @@ import java.util.Map;
  */
 
 public class SignUpActivity extends AppCompatActivity {
-
+    
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup_page);
+
     }
 
 
@@ -34,7 +35,7 @@ public class SignUpActivity extends AppCompatActivity {
         final EditText idField = (EditText)findViewById(R.id.id);
         final EditText pwField = (EditText)findViewById(R.id.password);
 
-        final String requestURL = "http://localhost:8080/process/login";
+        final String requestURL = "http://localhost:8080/process/login"; /* Will be modified */
         StringRequest request = new StringRequest(Request.Method.POST, requestURL,
                 new Response.Listener<String>() {
                     @Override
@@ -49,7 +50,6 @@ public class SignUpActivity extends AppCompatActivity {
                                 case "Succeed":
                                     Toast.makeText(getApplicationContext(), "Login Succeed!!!", Toast.LENGTH_LONG).show();
                                     break;
-
 
                                 case "Failed":
                                     Toast.makeText(getApplicationContext(), "Login Failed...", Toast.LENGTH_LONG).show();
