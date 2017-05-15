@@ -35,6 +35,7 @@ app.use(expressSession({
 }));
 
 router.route('/process/login').post(function(req,res){
+    console.log('/process/login');
     let id = req.body.id;
     let password = req.body.password;
     
@@ -48,11 +49,12 @@ router.route('/process/login').post(function(req,res){
             if(results){
                 res.writeHead('200',{"Content-Type" : "text/plain"});
                 res.end("Succeed");
-                return;
+                console.log("Succeed");
             }
             else{
                 res.writeHead('200',{"Content-Type" : "text/plain"});
                 res.end("Failed");
+                console.log("Failed");
             }
         });
     }
