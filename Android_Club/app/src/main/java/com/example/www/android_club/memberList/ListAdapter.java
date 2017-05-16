@@ -19,7 +19,6 @@ import java.util.ArrayList;
 public class ListAdapter extends BaseAdapter{
     Context context;
     ArrayList<list_item> list_items;
-
     TextView textView;
     ImageView imageView;
 
