@@ -1,5 +1,6 @@
 package com.example.www.android_club.signUp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.www.android_club.MainActivity;
 import com.example.www.android_club.R;
 
 import java.util.HashMap;
@@ -35,6 +37,7 @@ public class SignUpActivity extends AppCompatActivity {
         final EditText pwField = (EditText)findViewById(R.id.password);
 
         final String requestURL = "http://localhost:8080/process/login";
+
         StringRequest request = new StringRequest(Request.Method.POST, requestURL,
                 new Response.Listener<String>() {
                     @Override
@@ -72,5 +75,8 @@ public class SignUpActivity extends AppCompatActivity {
         };
         request.setShouldCache(false);
         Volley.newRequestQueue(this).add(request);
+
+        Intent intent=new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
     }
 }

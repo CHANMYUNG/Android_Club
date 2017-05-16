@@ -81,6 +81,7 @@ public class  MainAdapter extends ArrayAdapter<MainData> {
     }
 
     public void filter(String charText){
+        charText=charText.toLowerCase(Locale.getDefault());
         items.clear();
         if(charText.length()==0){
             items.addAll(arrayList);

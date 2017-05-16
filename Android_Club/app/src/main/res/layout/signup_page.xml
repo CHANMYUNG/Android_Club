@@ -19,7 +19,8 @@
         android:layout_height="60dp"
         android:hint="Password"
         android:ems="20"
-        android:id="@+id/password"/>
+        android:id="@+id/password"
+        android:inputType="textPassword"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
