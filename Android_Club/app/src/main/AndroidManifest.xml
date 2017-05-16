@@ -32,6 +32,7 @@
 
         </activity>
 
+<<<<<<< HEAD
         <activity android:name=".MainActivity">
 
         </activity>
@@ -40,6 +41,9 @@
 
         </activity>
 
+=======
+>>>>>>> 8862f5b2e18fb7d88533e74b33f829b76b3fff14
     </application>
+
     <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>
