@@ -11,18 +11,14 @@ let app = express()
 let router = express.Router();
 let mongoose = require('mongoose');
 
+// database instance 
 let database;
 
-let UserSchema;
-UserSchema = mongoose.Schema({
-    id : { type : String, unique : true},
-    password : String
-});
+// Managers
+let accountManager = require('./Managers/Account/accountManager');
 
-// collection :: accounts
-let UserModel = mongoose.model("accounts",UserSchema);
 
-app.set('port', process.env.PORT || 8080);
+app.set('port', 8080);
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -37,43 +33,138 @@ app.use(expressSession({
 
 router.route('/process/login').post(function(req,res){
     console.log("/process/login");
+
+    if(req.session.user){
+        res.end();
+        return;
+    }
     let id = req.body.id;
     let password = req.body.password;
     
     if(database){
-        Login(database,id,password,function(err, results){
-            if(err){
-                res.writeHead('200',{"Content-Type" : "text/plain"});
-                res.end("Database Connection Error");
+       accountManager.login(database,id,password,function(err, result){
+            if(err){ 
+                // What status code can I send status code?
+                res.end();
                 return;
             }
-            if(results){
-                res.writeHead('200',{"Content-Type" : "text/plain"});
-                res.end("Succeed");
+            if(result){
+                req.session.user = {
+                    id : id,
+                    authorized : true 
+                };
+
+                res.writeHead(200);
+                res.write("Succeed");
+                res.end();
             }
             else{
-                res.writeHead('200',{"Content-Type" : "text/plain"});
-                res.end("Failed");
+                res.writeHead(401);
+                res.write("Failed");
+                res.end();
             }
         });
     }
 });
 
-function Login(database, id, password, callback){
-    UserModel.find({"id":id,"password":password}, function(err,results){
+router.route('/process/logout').post(function(req,res){
+    // Session destroy
+    req.session.destroy(function(err){
+        console.log('Session destroyed');
+    });
+
+    res.writeHead(200,{"Content-Type" : "text/plain"});
+    res.write('Succeed');
+    res.end();
+
+});
+
+router.route('/process/idCheck').post(function(req,res){
+    let id = req.body.id;
+
+    accountManager.isIdExist(database, id, function(err, result){
         if(err){
-            callback(err,null);
+            res.writeHead(200,{"Content-Type" : "text/plain"});
+            res.write("Could not find from DB");
+            res.end();
             return;
         }
 
-        if(results.length>0){
-            callback(null,results);
+        // the id already exists
+        if(result){
+            res.writeHead(200,{"Content-Type" : "text/plain"});
+            res.write("already exists");
+            res.end();
+            return;
         }
+
+        // the id doesn't exist
         else{
-            callback(null,null);
+            res.writeHead(200,{"Content-Type" : "text/plain"});
+            res.write("Doesn't exist");
+            res.end();
+            return;
         }
     });
-}
+});
+
+router.route('/process/stuCheck').post(function(req,res){
+    let stuId = req.body.stuId;
+
+    accountManager.isStuExist(database, stuId, function(err, result){
+        if(err){
+            res.writeHead(200,{"Content-Type" : "text/plain"});
+            res.write("Error");
+            res.end();
+            return;
+        }
+
+        // the stuId already exists
+        if(result){
+            res.writeHead(200,{"Content-Type" : "text/plain"});
+            res.write("Can't");
+            res.end();
+            return;
+        }
+
+        // the stuId doesn't exist
+        else{
+            res.writeHead(200,{"Content-Type" : "text/plain"});
+            res.write("Can");
+            res.end();
+            return;
+        }
+    });
+});
+
+router.route('/process/regist').post(function(req,res){
+    let stuId = req.body.stuId;
+    let id = req.body.id;
+    let password = req.body.password;
+    let name = req.body.name;
+    let gender = req.body.gender;
+    let major = req.body.major;
+
+    accountManager.regist(database, stuId,id, password, name, gender, major, function(err){
+        // if registing failed
+        if(err){
+            // What status code can I send?
+            res.writeHead(200,{"Content-Type" : "text/plain"});
+            res.write("Failed");
+            res.end();
+            return;
+        }
+
+        // registing succeed
+        else{
+            res.writeHead(200,{"Content-Type" : "text/plain"});
+            res.write("Succeed");
+            res.end();
+        }
+    });
+});
+
+
 
 function connectDB(){
     let databaseUrl = "mongodb://localhost:27017/Arirang";
