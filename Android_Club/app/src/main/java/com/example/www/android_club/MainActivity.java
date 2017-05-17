@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                     viewSet=new ViewSet(g,e);
 
                     List list=new ArrayList((Collection) viewSet);
-                    gridAdapter=new MainAdapter(this,R.layout.activity_row,(ArrayList)list);
+                    gridAdapter=new MainAdapter(getApplicationContext(),R.layout.activity_row,(ArrayList)list);
 
 
                 }
