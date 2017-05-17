@@ -18,7 +18,7 @@ let database;
 let accountManager = require('./Managers/Account/accountManager');
 
 
-app.set('port', 8080);
+app.set('port', 80);
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
