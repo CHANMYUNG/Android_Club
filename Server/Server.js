@@ -17,8 +17,9 @@ let database;
 // Managers
 let accountManager = require('./Managers/Account/accountManager');
 
-
-app.set('port', 8080);
+// on Mac :: 8080,
+// on Ubuntu :: 80
+app.set('port', 80);
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
