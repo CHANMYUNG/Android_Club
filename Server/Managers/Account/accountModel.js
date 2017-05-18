@@ -2,7 +2,7 @@
 let mongoose = require('mongoose');
 
 let schema = mongoose.Schema({
-    stuId : {type : Number, require : true, unique : true},
+    stuNum : {type : Number, require : true, unique : true},
     id : { type : String, require: true, unique : true},
     password : {type : String, require : true},
     name : {type : String, require : true},

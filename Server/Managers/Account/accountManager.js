@@ -36,8 +36,8 @@ Manager.isIdExist = function(database, id, callback){
     })
 };
 
-Manager.isStuExist = function(database, stuId, callback){
-    model.find({"stuId" : stuId}, function(err, results){
+Manager.isStuExist = function(database, stuNum, callback){
+    model.find({"stuNum" : stuNum}, function(err, results){
         if(err){
             callback(err, null);
             return;
@@ -51,14 +51,14 @@ Manager.isStuExist = function(database, stuId, callback){
     });
 };
 
-Manager.regist = function(database, stuId,id, password, name, gender, major, callback){
-    let data = new model({"stuId" : stuId, "id" : id, "password" : password
+Manager.regist = function(database, stuNum,id, password, name, gender, major, callback){
+    let data = new model({"stuNum" : stuNum, "id" : id, "password" : password
                             , "name" : name, "gender" : gender, "major" : major});
     data.save(function(err){
         if(err)
             callback(true);
-	else{        
-	    callback(false);
+	    else{        
+	        callback(false);
     	}
     });
 };

@@ -18,7 +18,7 @@ let database;
 let accountManager = require('./Managers/Account/accountManager');
 
 
-app.set('port', 80);
+app.set('port', 8080);
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -109,9 +109,9 @@ router.route('/process/idCheck').post(function(req,res){
 });
 
 router.route('/process/stuCheck').post(function(req,res){
-    let stuId = req.body.stuId;
+    let stuNum = req.body.stuNum;
 
-    accountManager.isStuExist(database, stuId, function(err, result){
+    accountManager.isStuExist(database, stuNum, function(err, result){
         if(err){
             res.writeHead(200,{"Content-Type" : "text/plain"});
             res.write("Error");
@@ -119,7 +119,7 @@ router.route('/process/stuCheck').post(function(req,res){
             return;
         }
 
-        // the stuId already exists
+        // the stuNum already exists
         if(result){
             res.writeHead(200,{"Content-Type" : "text/plain"});
             res.write("Can't");
@@ -127,7 +127,7 @@ router.route('/process/stuCheck').post(function(req,res){
             return;
         }
 
-        // the stuId doesn't exist
+        // the stuNum doesn't exist
         else{
             res.writeHead(200,{"Content-Type" : "text/plain"});
             res.write("Can");
@@ -138,14 +138,14 @@ router.route('/process/stuCheck').post(function(req,res){
 });
 
 router.route('/process/regist').post(function(req,res){
-    let stuId = req.body.stuId;
+    let stuNum = req.body.stuNum;
     let id = req.body.id;
     let password = req.body.password;
     let name = req.body.name;
     let gender = req.body.gender;
     let major = req.body.major;
 
-    accountManager.regist(database, stuId,id, password, name, gender, major, function(err){
+    accountManager.regist(database, stuNum,id, password, name, gender, major, function(err){
         // if registing failed
         if(err){
             // What status code can I send?
