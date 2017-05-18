@@ -57,7 +57,9 @@ Manager.regist = function(database, stuId,id, password, name, gender, major, cal
     data.save(function(err){
         if(err)
             callback(true);
-        callback(false);
+	else{        
+	    callback(false);
+    	}
     });
 };
 
