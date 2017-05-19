@@ -3,7 +3,7 @@ let model = require('./accountModel');
 
 let Manager = {};
 
-Manager.login = function(database, id, password, callback){
+Manager.login = function( id, password, callback){
     model.find({"id":id,"password":password}, function(err,results){
         if(err){
             callback(err,null);
@@ -11,15 +11,15 @@ Manager.login = function(database, id, password, callback){
         }
 
         if(results.length>0){
-            callback(null,true);
+            callback(null,results[0]);
         }
         else{
-            callback(null,false);
+            callback(null,null);
         }
     });
 };
 
-Manager.isIdExist = function(database, id, callback){
+Manager.isIdExist = function(id, callback){
     model.find({"id":id}, function(err,results){
         if(err){
             callback(err, null);
@@ -36,7 +36,7 @@ Manager.isIdExist = function(database, id, callback){
     })
 };
 
-Manager.isStuExist = function(database, stuNum, callback){
+Manager.isStuExist = function(stuNum, callback){
     model.find({"stuNum" : stuNum}, function(err, results){
         if(err){
             callback(err, null);
@@ -51,15 +51,46 @@ Manager.isStuExist = function(database, stuNum, callback){
     });
 };
 
-Manager.regist = function(database, stuNum,id, password, name, gender, major, callback){
-    let data = new model({"stuNum" : stuNum, "id" : id, "password" : password
-                            , "name" : name, "gender" : gender, "major" : major});
+Manager.signUp = function(object, callback){
+
+    let data = new model(object);
     data.save(function(err){
-        if(err)
+        if(err){
             callback(true);
+        }
 	    else{        
 	        callback(false);
     	}
+    });
+};
+
+Manager.findByNum = function(stuNum, callback){
+    let result = model.find({"stuNum" : stuNum}, function(result){
+        if(err){
+            callback(-1);
+            return;
+        }
+        if(results.length > 0){
+            callback(JSON.stringify(results[0]));
+        }
+        else{
+            callback(null);
+        }
+    });
+};
+
+Manager.findById = function(id){
+    let result = model.find({"id" : id}, function(result){
+        if(err){
+            callback(-1);
+            return;
+        }
+        if(results.length > 0){
+            callback(JSON.stringify(results[0]));
+        }
+        else{
+            callback(null);
+        }
     });
 };
 
