@@ -29,5 +29,6 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     compile 'com.googlecode.android-query:android-query:0.25.9'
+    compile 'com.ssomai:android.scalablelayout:2.1.1'
 }
 

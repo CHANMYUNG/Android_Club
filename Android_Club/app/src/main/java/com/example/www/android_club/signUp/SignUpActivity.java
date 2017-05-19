@@ -1,6 +1,5 @@
 package com.example.www.android_club.signUp;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.Toast;
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
-
 import com.example.www.android_club.R;
 
 import java.util.HashMap;
@@ -45,7 +43,7 @@ public class SignUpActivity extends AppCompatActivity {
         aq.ajax("http://13.124.15.202:80/process/login", params, String.class, new AjaxCallback<String>(){
             @Override
             public void callback(String url, String response /* ResponseType responseValue */, AjaxStatus status)
-            {
+                {
                 int statusCode = status.getCode(); // status code
                 switch(statusCode){
                     case 401:
@@ -60,6 +58,5 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 }
