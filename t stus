@@ -1,0 +1,236 @@
+[33mcommit 16ce1ce73e92889af696e52efa13259554dbdd43[m
+Merge: 0b3735d 8862f5b
+Author: yjh5424 <yjh54240@naver.com>
+Date:   Tue May 16 23:15:29 2017 +0900
+
+    updated
+
+[33mcommit 0b3735d03a513767f34f6e9313ad24aadb47802b[m
+Merge: a8b0dcf 9c165a0
+Author: yjh5424 <yjh54240@naver.com>
+Date:   Tue May 16 23:07:24 2017 +0900
+
+    Merge branch 'yjh_layout+'
+
+[33mcommit 9c165a0765dce0cdb076ff8fa8f12baeb9ef49ff[m
+Author: yjh5424 <yjh54240@naver.com>
+Date:   Tue May 16 23:06:29 2017 +0900
+
+    updated
+
+[33mcommit 8862f5b2e18fb7d88533e74b33f829b76b3fff14[m
+Author: Terry Yun <nooheat1228@gmail.com>
+Date:   Tue May 16 23:04:55 2017 +0900
+
+    Updated
+
+[33mcommit 6f16a59f791b9cba9ee08756ba06227634391f11[m
+Author: Terry Yun <nooheat1228@gmail.com>
+Date:   Mon May 15 20:18:16 2017 +0900
+
+    Server updated
+
+[33mcommit 71ae93488a95755ebbbd4668b180a5b1f6ede540[m
+Author: Terry Yun <nooheat1228@gmail.com>
+Date:   Thu May 11 22:30:00 2017 +0900
+
+    Modified
+
+[33mcommit 2843f709fe907526a32cdd01adc94bfe16bb2b61[m
+Author: Terry Yun <nooheat1228@gmail.com>
+Date:   Wed May 10 22:16:19 2017 +0900
+
+    Error Fix
+
+[33mcommit 4815097982227d3acfc76f0fef74af74d0f84986[m
+Author: Terry Yun <nooheat1228@gmail.com>
+Date:   Wed May 10 22:16:11 2017 +0900
+
+    NodeJs Server Sample
+
+[33mcommit a8b0dcf252298bd8e102c10723c07448aabed87d[m
+Author: yjh5424 <yjh54240@naver.com>
+Date:   Wed May 10 19:15:47 2017 +0900
+
+    dddd
+
+[33mcommit 3fd1e4b59d4ee59c6667fb51ddda4ff2b43c58f6[m
+Merge: 8ac6728 ec4bb5a
+Author: yjh5424 <yjh54240@naver.com>
+Date:   Wed May 10 19:10:05 2017 +0900
+
+    sdcdsf
+
+[33mcommit 8ac6728210291be6123b9d08d7109bce29928cb9[m
+Merge: f3d08b6 a6feac6
+Author: yjh5424 <yjh54240@naver.com>
+Date:   Wed May 10 19:07:01 2017 +0900
+
+    Merge remote-tracking branch 'refs/remotes/origin/master' into yjh_layout+
+
+[33mcommit f3d08b6bece186c6af829310b68770681d095534[m
+Author: yjh5424 <yjh54240@naver.com>
+Date:   Wed May 10 19:06:50 2017 +0900
+
+    Updated
+
+[33mcommit ec4bb5aabb24e50c6870142d66efb3829eae67f6[m
+Merge: 959996c a6feac6
+Author: yjh5424 <yjh54240@naver.com>
+Date:   Thu Apr 13 17:15:40 2017 +0900
+
+    Merge remote-tracki13123ng branch 'origin/master'
+    
+    # Conflicts:
+    #       Android_Club/app/src/main/res/values/styles.xml
+
+[33mcommit 1f1139471a10d7ea9cadca91e95ccf2199255aa5[m
+Author: yjh5424 <yjh54240@naver.com>
+Date:   Thu Apr 13 17:07:29 2017 +0900
+
+    remain layouy
+
+[33mcommit 25c23505103087b1c3de35e079b37b02369ffb52[m
+Author: yjh5424 <yjh54240@naver.com>
+Date:   Thu Apr 13 17:07:05 2017 +0900
+
+    Add MemberList Layout
+
+[33mcommit a6feac6264faa5e0187cd3126aac14f03c4f0bad[m
+Author: Nooheat <nooheat1228@gmail.com>
+Date:   Thu Apr 13 09:48:01 2017 +0900
+
+    asd
+
+[33mcommit 0d9ba4929fc26c006258b48c35d88b39ebf13c1b[m
+Merge: 1c87157 5edeff1
+Author: yjh5424 <yjh54240@naver.com>
+Date:   Wed Apr 12 20:12:18 2017 +0900
+
+    Merge branch 'yjh_mergeTest' of https://github.com/Nooheat/Android_Club into yjh_mergeTest
+
+[33mcommit 1c87157bed5eb93cafab074d1fd253030cf7508d[m
+Author: yjh5424 <yjh54240@naver.com>
+Date:   Wed Apr 12 20:12:12 2017 +0900
+
+    123111jjj
+
+[33mcommit 5edeff178ea9f0ac0745978fd90d773f514b4f01[m
+Author: Nooheat <nooheat1228@gmail.com>
+Date:   Wed Apr 12 20:07:08 2017 +0900
+
+    Modified
+
+[33mcommit 55eeb29b888af1f572ea64cf7ceaae48ca5030eb[m
+Merge: 3dcc48f 285ad6e
+Author: Nooheat <nooheat1228@gmail.com>
+Date:   Wed Apr 12 19:50:17 2017 +0900
+
+    Merge remote-tracking branch 'origin/layout' into yjh_mergeTest
+    
+    # Conflicts:
+    #       Android_Club/app/src/main/res/values/styles.xml
+
+[33mcommit 959996c313a0c176e32db1c8a48a19cd177f49ec[m
+Merge: 3dcc48f 285ad6e
+Author: yjh5424 <yjh54240@naver.com>
+Date:   Wed Apr 12 19:46:28 2017 +0900
+
+    Merge remote-tracking branch 'refs/remotes/origin/master' into yjh_mergeTest
+    
+    # Conflicts:
+    #       Android_Club/app/src/main/res/values/styles.xml
+
+[33mcommit 3dcc48fa1f3b99518881d6b79caee0ca1dbe3ba6[m
+Author: yjh5424 <yjh54240@naver.com>
+Date:   Wed Apr 12 19:17:27 2017 +0900
+
+    Test Branch
+
+[33mcommit 285ad6ea053a36b55655eef1f34f130f19c61688[m
+Author: Nooheat <nooheat1228@gmail.com>
+Date:   Wed Apr 12 19:15:18 2017 +0900
+
+    made a java file 'clubInfo.java' that handles 'activity_clubinfo.xml'
+
+[33mcommit f8c1f0e4d082dc4ce4f29210e83c0ffe0bf8c1d7[m
+Author: Nooheat <nooheat1228@gmail.com>
+Date:   Wed Apr 12 19:14:09 2017 +0900
+
+    goHome button image
+
+[33mcommit 29d6948de95264fc5762cc645f0908007df7e554[m
+Author: Nooheat <nooheat1228@gmail.com>
+Date:   Wed Apr 12 19:13:45 2017 +0900
+
+    made 'Mypage' layout
+
+[33mcommit b15f698eb35b9c5ad4e17dba7ccbd2b15cc95649[m
+Author: Nooheat <nooheat1228@gmail.com>
+Date:   Wed Apr 12 19:13:25 2017 +0900
+
+    application style modified
+
+[33mcommit c95f53e235c256ec0afdb91ce7131269ecabe0e5[m
+Author: Nooheat <nooheat1228@gmail.com>
+Date:   Wed Apr 12 19:13:09 2017 +0900
+
+    made 'Mypage' layout
+
+[33mcommit 99bf9c0ab809841e0a1f46c5e1660b4c3bed35e1[m
+Author: Nooheat <nooheat1228@gmail.com>
+Date:   Wed Apr 12 19:12:07 2017 +0900
+
+    Manifest modified
+
+[33mcommit 67a7ea61ac03912005cbb0489c64e2d15bb3e5c2[m
+Author: Nooheat <nooheat1228@gmail.com>
+Date:   Tue Apr 11 20:25:45 2017 +0900
+
+    menu image resource
+
+[33mcommit 0023311eaa75a87a73364b649160841ca3aa3b51[m
+Author: Nooheat <nooheat1228@gmail.com>
+Date:   Tue Apr 11 20:24:58 2017 +0900
+
+    layout of my page / for users who don't have a club
+
+[33mcommit 15b027370adfa224b5e0e13ba2a3e9b176fd7052[m
+Author: Nooheat <nooheat1228@gmail.com>
+Date:   Tue Apr 11 20:23:49 2017 +0900
+
+    old resource removed
+
+[33mcommit 5e2ecb3272200b0491d28b6eeaf822f508834d0a[m
+Author: Nooheat <nooheat1228@gmail.com>
+Date:   Tue Apr 11 19:28:53 2017 +0900
+
+    my page resources
+
+[33mcommit 10c232853cec49d55a101b8295d89100b2401027[m
+Author: Nooheat <nooheat1228@gmail.com>
+Date:   Wed Apr 5 20:12:09 2017 +0900
+
+    made a layout, club info
+    
+    made a layout “clubinfo.xml”
+
+[33mcommit e904e4e27d2aced3f4848794ad5854789027b25d[m
+Author: Nooheat <nooheat1228@gmail.com>
+Date:   Wed Apr 5 17:09:25 2017 +0900
+
+    Button Image
+
+[33mcommit a5c066b4e57f804f7b7a67ed02e26e51920c2bd2[m
+Author: yjh5424 <yjh54240@naver.com>
+Date:   Mon Apr 3 18:59:42 2017 +0900
+
+    First Project Commit
+    
+    >Now Start<
+
+[33mcommit 78fbef80b91acb46e1675f61ffc4a13392c25dcb[m
+Author: Terry Yun <nooheat1228@gmail.com>
+Date:   Mon Apr 3 18:52:19 2017 +0900
+
+    Initial commit
