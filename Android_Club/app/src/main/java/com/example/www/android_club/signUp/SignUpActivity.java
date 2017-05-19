@@ -34,7 +34,6 @@ public class SignUpActivity extends AppCompatActivity {
         final EditText pwField = (EditText)findViewById(R.id.password);
         final String password = pwField.getText().toString();
 
-
         aq = new AQuery(this);
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("id",id);
