@@ -2,71 +2,43 @@
 let router = require('express').Router();
 let circleManager = require('./circleManager');
 
-router.route('/circle/getInfoByName').post(function(req,res){
+router.route('/circle/getInfoByName').post(function (req, res) {
     let circleName = req.body.circleName;
-    circleManager.getInfoByName(circleName, function(result){
-        // DATABASE ERROR
-        if(result == -1){
-            res.writeHead(200,{"Content-Type" : "text/plain"});
-            res.write("ERROR OCCURED");
-            res.end();
-        }
-        // COULD NOT GET CIRCLE INFO 
-        else if(result == null){
-            res.writeHead(200,{"Content-Type" : "text/plain"});
-            res.write("Doesn't exist");
-            res.end();
-        }
-        // JSON OBJECT
-        else{
-            res.writeHead(200,{"Content-Type" : "application/json"});
-            res.write(result);
-            res.end();
-        }
+    circleManager.getInfoByName(circleName, function (JSONResponse) {
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.write(JSONResponse);
+        res.end();
     });
 });
 
-router.route('/circle/getInfoByLeader').post(function(req,res){
+router.route('/circle/getInfoByLeader').post(function (req, res) {
     let leader = req.body.leader;
-    circleManager.getInfoByLeader(leader, function(result){
-        // DATABASE ERROR
-        if(result == -1){
-            res.writeHead(200,{"Content-Type" : "text/plain"});
-            res.write("ERROR OCCURED");
-            res.end();
-        }
-        // COULD NOT GET CIRCLE INFO 
-        else if(result == null){
-            res.writeHead(200,{"Content-Type" : "text/plain"});
-            res.write("Doesn't exist");
-            res.end();
-        }
-        // JSON OBJECT
-        else{
-            res.writeHead(200,{"Content-Type" : "application/json"});
-            res.write(result);
-            res.end();
-        }
+    circleManager.getInfoByLeader(leader, function (JSONResponse) {
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.write(JSONResponse);
+        res.end();
     });
 });
 
-/* TO DO :: 동아리가 이미 존재하는지 검사 */
-router.route('/circle/isExist').post(function(req,res){
+router.route('/circle/isNameExist').post(function (req, res) {
     let circleName = req.body.circleName;
-    circleManager.isCircleExist()
-
+    circleManager.isNameExist(circleName, function (JSONResponse) {
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.write(JSONResponse);
+        res.end();
+    });
 });
 
-router.route('/circle/create').post(function(req,res){
-    circleManager.createCircle(req.body, function(err){
-        if(err){
-            res.writeHead(200,{"Content-Type" : "text/plain"});
+router.route('/circle/create').post(function (req, res) {
+    circleManager.createCircle(req.body, function (err) {
+        if (err) {
+            res.writeHead(200, { "Content-Type": "text/plain" });
             res.write("Failed");
             res.end();
         }
 
-        else{
-            res.writeHead(200,{"Content-Type" : "text/plain"});
+        else {
+            res.writeHead(200, { "Content-Type": "text/plain" });
             res.write("Succeed");
             res.end();
         }

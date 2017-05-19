@@ -1,91 +1,109 @@
 
 let model = require('./circleModel');
 
-let manager ={};
+let manager = {};
 
-// path : /process/getCircleInfoByName.
+// path : /circle/getInfoByName.
 // find a circle by circle name.
-// and response the circle as a JSON file.
-manager.getInfoByName = function(name, callback){
-    model.find({"name" : name}, function(err, results){
-        if(err){
-            callback(-1);
-            return;
+// response the circle as a JSON foramt.
+manager.getInfoByName = function (name, callback) {
+    model.find({ "name": name }, function (err, results) {
+        let info = {
+            "error": false,
+            "info": {}
+        };
+        let JSONResponse;
+        if (err) {
+            info.error = true;
         }
-        if(results.length > 0){
-            callback(JSON.stringify(results[0]));
+        if (results.length > 0) {
+            info.info = results[0];
         }
-        else{
-            callback(null);
+        else {
+            info.info = null;
         }
+        JSONResponse = JSON.stringify(info);
+        callback(JSONResponse);
     });
 };
 
-// path : /process/getCircleInfoByLeader
-// find a circle by Leader Number.
-// and response the circle as a JSON file.
-manager.getInfoByLeader = function(leader, callback){
-    model.find({"leader" : leader}, function(err, results){
-        if(err){
-            callback(-1);
-            return;
+// path : /circle/getInfoByLeader
+// find a circle by leader's stuNum.
+// response the circle as a JSON format.
+manager.getInfoByLeader = function (leader, callback) {
+    model.find({ "leader": leader }, function (err, results) {
+        let info = {
+            "error": false,
+            "info": {}
+        };
+        let JSONResponse;
+        if (err) {
+            info.error = true;
         }
-        if(results.length > 0){
-            callback(JSON.stringify(results[0]));
+        if (results.length > 0) {
+            info.info = results[0];
         }
-        else{
-            callback(null);
+        else {
+            info.info = null;
         }
+        JSONResponse = JSON.stringify(info);
+        callback(JSONResponse);
     });
 };
 
 // path : /process/getMembersByName
 // find a circle members by circle name.
 // and response them as JSON ARRAY
-manager.getMembersByName = function(circleName, callback){
-    model.find({"name" : circleName}, function(err, results){
-        if(err){
+manager.getMembersByName = function (circleName, callback) {
+    model.find({ "name": circleName }, function (err, results) {
+        if (err) {
             callback(-1);
             return;
         }
-        if(results.length>0){
+        if (results.length > 0) {
             let Members = [];
-            for(let i=0;i<results.length;i++){
+            for (let i = 0; i < results.length; i++) {
                 Members.push(JSON.stringify(results[i]));
             }
             callback(Members);
         }
-        else{
+        else {
             callback(null);
         }
     });
 };
 
-manager.isCircleExist = function(circleName,callback){
-    model.find({"name" : circleName}, function(err, results){
-        if(err){
-            callback(-1);
-            return;
+manager.isNameExist = function (circleName, callback) {
+    model.find({ "name": circleName }, function (err, results) {
+        let response = {
+            "error": false,
+            "exist": false
+        };
+        let JSONResponse;
+        if (err) {
+            response.error = true;
         }
-        if(results.length > 0){
-            callback(true);
+        if (results.length > 0) {
+            response.exist = true;
         }
-        else{
-            callback(false);
+        else {
+            response.exist = false;
         }
-    })
+        JSONResponse = JSON.stringify(response);
+        callback(JSONResponse);
+    });
 };
 
-manager.getMembersByLeader = function(){};
+manager.getMembersByLeader = function () { };
 
-manager.createCircle = function(object, callback){
+manager.createCircle = function (object, callback) {
     let data = new model(object);
 
-    data.save(function(err){
-        if(err){
+    data.save(function (err) {
+        if (err) {
             callback(true);
         }
-        else{
+        else {
             callback(false);
         }
     });

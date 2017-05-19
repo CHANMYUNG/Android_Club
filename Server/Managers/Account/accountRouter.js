@@ -11,28 +11,11 @@ router.route('/account/login').post(function (req, res) {
     let id = req.body.id;
     let password = req.body.password;
 
-    accountManager.login(id, password, function (err, result) {
-        if (err) {
-            // What status code can I send status code?
-            res.end();
-            return;
-        }
-        if (result) {
-            req.session.user = {
-                id: id,
-                circle: result.circle,
-                stuNum: result.stuNum,
-                authorized: true
-            };
-            res.writeHead(200);
-            res.write("Succeed");
-            res.end();
-        }
-        else {
-            res.writeHead(401);
-            res.write("Failed");
-            res.end();
-        }
+    accountManager.login(id, password, function (JSONResponse) {
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.write(JSONResponse);
+        res.end();
+
     });
 
 });
@@ -45,7 +28,6 @@ router.route('/account/logout').post(function (req, res) {
         });
     }
     res.writeHead(200, { "Content-Type": "text/plain" });
-    res.write('Succeed');
     res.end();
 
 });
@@ -53,59 +35,21 @@ router.route('/account/logout').post(function (req, res) {
 router.route('/account/idCheck').post(function (req, res) {
     let id = req.body.id;
 
-    accountManager.isIdExist(id, function (err, result) {
-        if (err) {
-            res.writeHead(200, { "Content-Type": "text/plain" });
-            res.write("Could not find from DB");
-            res.end();
-            return;
-        }
-
-        // the id already exists
-        if (result) {
-            res.writeHead(200, { "Content-Type": "text/plain" });
-            res.write("already exists");
-            res.end();
-            return;
-        }
-
-        // the id doesn't exist
-        else {
-            res.writeHead(200, { "Content-Type": "text/plain" });
-            res.write("Doesn't exist");
-            res.end();
-            return;
-        }
+    accountManager.isIdExist(id, function (JSONResponse) {
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.write(JSONResponse);
+        res.end();
     });
 });
 
 router.route('/account/stuCheck').post(function (req, res) {
-    
+
     let stuNum = req.body.stuNum;
 
-    accountManager.isStuExist(stuNum, function (err, result) {
-        if (err) {
-            res.writeHead(200, { "Content-Type": "text/plain" });
-            res.write("Error");
-            res.end();
-            return;
-        }
-
-        // the stuNum already exists
-        if (result) {
-            res.writeHead(200, { "Content-Type": "text/plain" });
-            res.write("Can't");
-            res.end();
-            return;
-        }
-
-        // the stuNum doesn't exist
-        else {
-            res.writeHead(200, { "Content-Type": "text/plain" });
-            res.write("Can");
-            res.end();
-            return;
-        }
+    accountManager.isStuExist(stuNum, function (JSONResponse) {
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.write(JSONResponse);
+        res.end();
     });
 });
 
@@ -117,21 +61,20 @@ router.route('/account/signUp').post(function (req, res) {
         req.body.circle = null;
     }
 
-    accountManager.signUp(req.body, function (err) {
-        // if signing up failed
-        if (err) {
-            // What status code can I send?
-            res.writeHead(200, { "Content-Type": "text/plain" });
-            res.write("Failed");
-            res.end();
-        }
+    let object = req.body;
+    accountManager.signUp(object, function (JSONResponse) {
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.write(JSONResponse);
+        res.end();
+    });
+});
 
-        // signing up succeed
-        else {
-            res.writeHead(200, { "Content-Type": "text/plain" });
-            res.write("Succeed");
-            res.end();
-        }
+router.route('/account/findAccount').post(function(req, res){
+    let stuNum = req.body.stuNum;
+    accountManager.findAccountByNum(stuNum, function(JSONResponse){
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.write(JSONResponse);
+        res.end();
     });
 });
 

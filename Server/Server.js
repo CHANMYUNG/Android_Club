@@ -21,7 +21,7 @@ let circleRouter = require('./Managers/Circle/circleRouter');
 
 // on Mac :: 8080,
 // on Ubuntu :: 80
-app.set('port', 80);
+app.set('port', 8080);
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
