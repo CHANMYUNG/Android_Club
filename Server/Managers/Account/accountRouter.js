@@ -15,7 +15,6 @@ router.route('/account/login').post(function (req, res) {
         res.writeHead(200, { "Content-Type": "application/json" });
         res.write(JSONResponse);
         res.end();
-
     });
 
 });
