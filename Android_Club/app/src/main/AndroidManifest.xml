@@ -25,9 +25,9 @@
 
         </activity>
 
-        <activity android:name=".myPage.myPage_o">
+       <!-- <activity android:name=".myPage.myPage_o">
 
-        </activity>
+        </activity>-->
         <activity android:name=".memberList.memberListActivity">
 
         </activity>

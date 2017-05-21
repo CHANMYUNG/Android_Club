@@ -5,14 +5,30 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.androidquery.AQuery;
+import com.androidquery.callback.AjaxCallback;
+import com.androidquery.callback.AjaxStatus;
+import com.example.www.android_club.ClubMyPage;
 import com.example.www.android_club.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -28,10 +44,12 @@ public class ClubListFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private AQuery aq;
+    private JSONArray circles;
     private ListView clubList;
     private ClubListAdapter adapter;
-    private List<Club> clubs;
+    private ArrayList<Club> clubs = new ArrayList<>();
+    private Club club;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -69,27 +87,98 @@ public class ClubListFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        aq = new AQuery(getActivity());
+        Map<String, Object> params = new HashMap<>();
+        aq.ajax("http://13.124.15.202:80/circle/getCircles", params, String.class, new AjaxCallback<String>(){
+            @Override
+            public void callback(String url, String response /* ResponseType responseValue */, AjaxStatus status)
+            {
+                try {
+                    JSONObject object = new JSONObject(response);
+                    if(object.getBoolean("error")) {
+                        Toast.makeText(getActivity(), "에러발생", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    JSONArray circles = object.getJSONArray("circles");
+                    for(int i = 0 ; i < circles.length(); i ++){
+                        JSONObject circle = (JSONObject) circles.get(i);
+                        clubs.add(new Club(R.drawable.dsmlogo, circle.getString("name"), Integer.toString(circle.getInt("leader")), circle.getInt("size")));
+                    }
+
+                    adapter= new ClubListAdapter(getActivity(),clubs);
+                    clubList.setAdapter(adapter);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
     public void addListView(ListView listView, ArrayList arrayList){
-        arrayList.add(new Club(R.drawable.dsmlogo,"시나브로","강석직",5));
-        arrayList.add(new Club(R.drawable.dsmlogo,"시나브로","강석직",6));
-        arrayList.add(new Club(R.drawable.dsmlogo,"시나브로","강석직",7));
-        arrayList.add(new Club(R.drawable.dsmlogo,"시나브로","강석직",8));
-        arrayList.add(new Club(R.drawable.ic_content_paste_black_24dp,"A-Rpt","윤정현",10));
-        adapter= new ClubListAdapter(getActivity(),arrayList);
-        listView.setAdapter(adapter);
+
+        adapter= new ClubListAdapter(getActivity(),getCircles());
+        clubList.setAdapter(adapter);
 
     }
 
+    private List<Club> getCircles() {
+        aq = new AQuery(getActivity());
+        Map<String, Object> params = new HashMap<>();
+        aq.ajax("http://13.124.15.202:80/circle/getCircles", params, String.class, new AjaxCallback<String>(){
+            @Override
+            public void callback(String url, String response /* ResponseType responseValue */, AjaxStatus status)
+            {
+                try {
+                    JSONObject object = new JSONObject(response);
+                    if(object.getBoolean("error")) {
+                        Toast.makeText(getActivity(), "에러발생", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    JSONArray circles = object.getJSONArray("circles");
+                    for(int i = 0 ; i < circles.length(); i ++){
+                        JSONObject circle = (JSONObject) circles.get(i);
+                        Toast.makeText(getActivity(), circle.getString("name"), Toast.LENGTH_SHORT).show();
+                        clubs.add(new Club(R.drawable.dsmlogo, circle.getString("name"), Integer.toString(circle.getInt("leader")), circle.getInt("size")));
+                    }
+                } catch (JSONException e) {
+                    Toast.makeText(getActivity(), "ERROR", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), e.getStackTrace().toString() , Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        clubs.add(new Club(R.drawable.dsmlogo, "시나브로", "강석직", 5));
+        return clubs;
+    }
+
+    /*
+        public void fragmentChangeButton(final Button button, final LinearLayout linearLayout, final int checkNum){ //프레그먼트를 바꾸는 버튼
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    linearLayout.setVisibility(View.GONE); //공지사항뷰 안보이게
+                    button.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                    button.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                    FragmentManager fragmentManager=getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                    if(checkNum==1){
+                        fragmentTransaction.replace(R.id.fragment,new ClubListFragment());
+                        fragmentTransaction.commit();
+                    }else if(checkNum ==2){
+                        fragmentTransaction.replace(R.id.fragment,new ClubMyPage());
+                        fragmentTransaction.commit(); //프래그먼트를 띄우기
+                    }
+                }
+            });
+        }
+    */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View v=inflater.inflate(R.layout.fragment_clublist,container,false);
         clubList=(ListView)v.findViewById(R.id.clubListView);
-        clubs= new ArrayList<>();
-        addListView(clubList,(ArrayList)clubs);
+        addListView(clubList, (ArrayList) clubs);
         return v;
     }
 

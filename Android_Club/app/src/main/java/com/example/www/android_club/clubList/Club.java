@@ -13,7 +13,9 @@ public class Club {
     String reader;
     int memberNum;
 
+    public Club(){
 
+    }
     public Club(int image, String clubName, String reader, int memberNum) {
         this.image = image;
         this.clubName = clubName;
