@@ -84,10 +84,12 @@ public class ClubListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        clubList=(ListView)getView().findViewById(R.id.clubListView);
+
+        View v=inflater.inflate(R.layout.fragment_clublist,container,false);
+        clubList=(ListView)v.findViewById(R.id.clubListView);
         clubs= new ArrayList<>();
         addListView(clubList,(ArrayList)clubs);
-        return super.onCreateView(inflater,container,savedInstanceState);
+        return v;
     }
 
     /*public void addItem(int icon,String clubName,String reader,int num){
