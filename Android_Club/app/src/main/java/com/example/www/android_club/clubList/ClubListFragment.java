@@ -76,6 +76,7 @@ public class ClubListFragment extends Fragment {
         arrayList.add(new Club(R.drawable.dsmlogo,"시나브로","강석직",6));
         arrayList.add(new Club(R.drawable.dsmlogo,"시나브로","강석직",7));
         arrayList.add(new Club(R.drawable.dsmlogo,"시나브로","강석직",8));
+        arrayList.add(new Club(R.drawable.ic_content_paste_black_24dp,"A-Rpt","윤정현",10));
         adapter= new ClubListAdapter(getActivity(),arrayList);
         listView.setAdapter(adapter);
 

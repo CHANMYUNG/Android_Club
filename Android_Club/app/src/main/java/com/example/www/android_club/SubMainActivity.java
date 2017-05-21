@@ -51,6 +51,10 @@ public class SubMainActivity extends AppCompatActivity {
         arrayList.add(new Notice("공지사항","윤정현","2017-05-23"));
         arrayList.add(new Notice("공지사항","윤정현","2017-05-24"));
         arrayList.add(new Notice("공지사항","윤정현","2017-05-25"));
+        arrayList.add(new Notice("공지사항","윤태훈","2017-05-26"));
+        arrayList.add(new Notice("공지사항","윤태훈","2017-05-27"));
+        arrayList.add(new Notice("공지사항","윤태훈","2017-05-28"));
+        arrayList.add(new Notice("공지사항","윤태훈","2017-05-29"));
         adapter= new NoticeListAdapter(getApplicationContext(),arrayList);
         listView.setAdapter(adapter);
     }
