@@ -43,6 +43,10 @@
         <activity android:name=".LoginOrJoin.RegisterActivity">
 
         </activity>
+
+        <activity android:name=".SubMainActivity">
+
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET"/>

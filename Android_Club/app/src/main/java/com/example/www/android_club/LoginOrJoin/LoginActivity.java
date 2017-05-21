@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.www.android_club.R;
+import com.example.www.android_club.SubMainActivity;
 
 public class LoginActivity extends AppCompatActivity {
     @Override
@@ -26,6 +27,16 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getApplicationContext(),RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        Button loginButton=(Button)findViewById(R.id.loginButton);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(), SubMainActivity.class);
                 startActivity(intent);
             }
         });
