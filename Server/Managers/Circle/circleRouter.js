@@ -46,4 +46,11 @@ router.route('/circle/create').post(function (req, res) {
 
 });
 
+router.route('/circle/getCircles').post(function(req,res){
+    console.log('/circle/getCircles');
+    circleManager.getCircles(function(JSONResponse){
+        res.write(JSONResponse);
+        res.end();
+    });
+});
 module.exports = router;

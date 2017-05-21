@@ -24,6 +24,7 @@ Manager.login = function (id, password, callback) {
         }
 
         JSONResponse = JSON.stringify(response);
+        console.log(JSONResponse)
         callback(JSONResponse);
     });
 };
