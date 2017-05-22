@@ -12,5 +12,5 @@ let schema = mongoose.Schema({
     club : {type : String}
 });
 
-let model = mongoose.model("accounts", schema);
-module.exports = model;
+
+module.exports = schema;

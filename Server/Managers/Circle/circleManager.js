@@ -112,7 +112,7 @@ manager.getCircles = function(callback){
     model.find({},function(err, results){
         let response = {
             "error" : false,
-            "clubs" : []
+            "circles" : []
         };
         let JSONResponse;
 
