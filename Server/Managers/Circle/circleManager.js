@@ -108,4 +108,26 @@ manager.createCircle = function (object, callback) {
         }
     });
 };
+manager.getCircles = function(callback){
+    model.find({},function(err, results){
+        let response = {
+            "error" : false,
+            "circles" : []
+        };
+        let JSONResponse;
+
+        if(err){
+            response.error = true;
+        }
+        
+        if(results.length > 0){
+            for(var i = 0 ; i < results.length ; i++){
+                response.clubs.push(results[i]);
+            }
+        }
+        JSONResponse = JSON.stringify(response);
+
+        callback(JSONResponse);
+    });
+}
 module.exports = manager;

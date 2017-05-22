@@ -3,7 +3,7 @@ let router = require('express').Router();
 let accountManager = require('./accountManager');
 
 router.route('/account/login').post(function (req, res) {
-
+    console.log("in");
     if (req.session.user) {
         res.end();
         return;
@@ -12,7 +12,6 @@ router.route('/account/login').post(function (req, res) {
     let password = req.body.password;
 
     accountManager.login(id, password, function (JSONResponse) {
-        res.writeHead(200, { "Content-Type": "application/json" });
         res.write(JSONResponse);
         res.end();
 
