@@ -7,5 +7,4 @@ let schema = mongoose.Schema({
     size : {type : Number, required : true}
 });
 
-let model = mongoose.model("circles", schema);
-module.exports = model;
+module.exports = schema;
