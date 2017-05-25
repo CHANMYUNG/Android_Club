@@ -1,13 +1,12 @@
-
-let model = require('./circleModel');
-
-let manager = {};
+let mongoose = require('mongoose');
+let schema = require('./schema');
 
 // path : /circle/getInfoByName.
 // find a circle by circle name.
 // response the circle as a JSON foramt.
-manager.getInfoByName = function (name, callback) {
-    model.find({ "name": name }, function (err, results) {
+
+schema.static('getInfoByName', function (name, callback) {
+    this.find({ "name": name }, function (err, results) {
         let info = {
             "error": false,
             "info": {}
@@ -25,13 +24,14 @@ manager.getInfoByName = function (name, callback) {
         JSONResponse = JSON.stringify(info);
         callback(JSONResponse);
     });
-};
+});
 
 // path : /circle/getInfoByLeader
 // find a circle by leader's stuNum.
 // response the circle as a JSON format.
-manager.getInfoByLeader = function (leader, callback) {
-    model.find({ "leader": leader }, function (err, results) {
+
+schema.static('getInfoByLeader', function (leader, callback) {
+    this.find({ "leader": leader }, function (err, results) {
         let info = {
             "error": false,
             "info": {}
@@ -49,13 +49,15 @@ manager.getInfoByLeader = function (leader, callback) {
         JSONResponse = JSON.stringify(info);
         callback(JSONResponse);
     });
-};
+});
+
 
 // path : /process/getMembersByName
 // find a circle members by circle name.
 // and response them as JSON ARRAY
-manager.getMembersByName = function (circleName, callback) {
-    model.find({ "name": circleName }, function (err, results) {
+
+schema.static('getMembersByName', function (circleName, callback) {
+    this.find({ "name": circleName }, function (err, results) {
         if (err) {
             callback(-1);
             return;
@@ -71,10 +73,29 @@ manager.getMembersByName = function (circleName, callback) {
             callback(null);
         }
     });
-};
+});
 
-manager.isNameExist = function (circleName, callback) {
-    model.find({ "name": circleName }, function (err, results) {
+schema.static('getMembersByLeader', function (leader, callback) {
+    this.find({ "leader": leader }, function (err, results) {
+        if (err) {
+            callback(-1);
+            return;
+        }
+        if (results.length > 0) {
+            let Members = [];
+            for (let i = 0; i < results.length; i++) {
+                Members.push(JSON.stringify(results[i]));
+            }
+            callback(Members);
+        }
+        else {
+            callback(null);
+        }
+    });
+});
+
+schema.static('isNameExist', function (circleName, callback) {
+    this.find({ "name": circleName }, function (err, results) {
         let response = {
             "error": false,
             "exist": false
@@ -92,11 +113,9 @@ manager.isNameExist = function (circleName, callback) {
         JSONResponse = JSON.stringify(response);
         callback(JSONResponse);
     });
-};
+});
 
-manager.getMembersByLeader = function () { };
-
-manager.createCircle = function (object, callback) {
+schema.static('createCircle', function (object, callback) {
     let data = new model(object);
 
     data.save(function (err) {
@@ -107,21 +126,22 @@ manager.createCircle = function (object, callback) {
             callback(false);
         }
     });
-};
-manager.getCircles = function(callback){
-    model.find({},function(err, results){
+});
+
+schema.static('getCircles', function (callback) {
+    model.find({}, function (err, results) {
         let response = {
-            "error" : false,
-            "circles" : []
+            "error": false,
+            "circles": []
         };
         let JSONResponse;
 
-        if(err){
+        if (err) {
             response.error = true;
         }
-        
-        if(results.length > 0){
-            for(var i = 0 ; i < results.length ; i++){
+
+        if (results.length > 0) {
+            for (var i = 0; i < results.length; i++) {
                 response.clubs.push(results[i]);
             }
         }
@@ -129,5 +149,8 @@ manager.getCircles = function(callback){
 
         callback(JSONResponse);
     });
-}
+});
+
+let manager = mongoose.model("circles", schema);
+
 module.exports = manager;

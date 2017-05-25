@@ -1,6 +1,7 @@
 
 let router = require('express').Router();
-let accountManager = require('./accountManager');
+// let accountManager = require('./accountManager');
+let manager = require('./manager');
 
 router.route('/account/login').post(function (req, res) {
     console.log("in");
@@ -11,7 +12,7 @@ router.route('/account/login').post(function (req, res) {
     let id = req.body.id;
     let password = req.body.password;
 
-    accountManager.login(id, password, function (JSONResponse) {
+    manager.login(id, password, function (JSONResponse) {
         res.write(JSONResponse);
         res.end();
 
@@ -34,7 +35,7 @@ router.route('/account/logout').post(function (req, res) {
 router.route('/account/idCheck').post(function (req, res) {
     let id = req.body.id;
 
-    accountManager.isIdExist(id, function (JSONResponse) {
+    manager.isIdExist(id, function (JSONResponse) {
         res.writeHead(200, { "Content-Type": "application/json" });
         res.write(JSONResponse);
         res.end();
@@ -45,7 +46,7 @@ router.route('/account/stuCheck').post(function (req, res) {
 
     let stuNum = req.body.stuNum;
 
-    accountManager.isStuExist(stuNum, function (JSONResponse) {
+    manager.isStuExist(stuNum, function (JSONResponse) {
         res.writeHead(200, { "Content-Type": "application/json" });
         res.write(JSONResponse);
         res.end();
@@ -61,7 +62,7 @@ router.route('/account/signUp').post(function (req, res) {
     }
 
     let object = req.body;
-    accountManager.signUp(object, function (JSONResponse) {
+    manager.signUp(object, function (JSONResponse) {
         res.writeHead(200, { "Content-Type": "application/json" });
         res.write(JSONResponse);
         res.end();
@@ -70,7 +71,7 @@ router.route('/account/signUp').post(function (req, res) {
 
 router.route('/account/findAccount').post(function(req, res){
     let stuNum = req.body.stuNum;
-    accountManager.findAccountByNum(stuNum, function(JSONResponse){
+    manager.findAccountByNum(stuNum, function(JSONResponse){
         res.writeHead(200, { "Content-Type": "application/json" });
         res.write(JSONResponse);
         res.end();

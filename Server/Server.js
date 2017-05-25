@@ -15,8 +15,8 @@ let mongoose = require('mongoose');
 let database;
 
 // Managers
-let accountRouter = require('./Managers/Account/accountRouter');
-let circleRouter = require('./Managers/Circle/circleRouter');
+let accountRouter = require('./Managers/Account/router');
+let circleRouter = require('./Managers/Circle/router');
 
 
 // on Mac :: 8080,
