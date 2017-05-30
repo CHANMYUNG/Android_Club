@@ -75,6 +75,7 @@ schema.static('getMembersByName', function (circleName, callback) {
     });
 });
 
+
 schema.static('getMembersByLeader', function (leader, callback) {
     this.find({ "leader": leader }, function (err, results) {
         if (err) {
