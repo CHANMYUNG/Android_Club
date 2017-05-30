@@ -58,7 +58,6 @@ schema.static('getInfoByLeader', function (leader, callback) {
 
 schema.static('getMembersByName', function (circleName, callback) {
     this.find({ "name": circleName }, function (err, results) {
-        
         if (err) {
             callback(-1);
             return;
@@ -75,7 +74,6 @@ schema.static('getMembersByName', function (circleName, callback) {
         }
     });
 });
-
 
 
 schema.static('getMembersByLeader', function (leader, callback) {
@@ -96,7 +94,6 @@ schema.static('getMembersByLeader', function (leader, callback) {
         }
     });
 });
-
 
 schema.static('isNameExist', function (circleName, callback) {
     this.find({ "name": circleName }, function (err, results) {
