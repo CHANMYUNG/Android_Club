@@ -58,6 +58,8 @@ schema.static('getInfoByLeader', function (leader, callback) {
 
 schema.static('getMembersByName', function (circleName, callback) {
     this.find({ "name": circleName }, function (err, results) {
+<<<<<<< HEAD:Server/Managers/Circle/manager.js
+=======
         if (err) {
             callback(-1);
             return;
@@ -77,6 +79,7 @@ schema.static('getMembersByName', function (circleName, callback) {
 
 schema.static('getMembersByLeader', function (leader, callback) {
     this.find({ "leader": leader }, function (err, results) {
+>>>>>>> 669a9ad54893becad80bc475c18459ffa5946d44:Server/Managers/Circle/manager.js
         if (err) {
             callback(-1);
             return;
@@ -94,6 +97,28 @@ schema.static('getMembersByLeader', function (leader, callback) {
     });
 });
 
+<<<<<<< HEAD:Server/Managers/Circle/manager.js
+schema.static('getMembersByLeader', function (leader, callback) {
+    this.find({ "leader": leader }, function (err, results) {
+        if (err) {
+            callback(-1);
+            return;
+        }
+        if (results.length > 0) {
+            let Members = [];
+            for (let i = 0; i < results.length; i++) {
+                Members.push(JSON.stringify(results[i]));
+            }
+            callback(Members);
+        }
+        else {
+            callback(null);
+        }
+    });
+});
+
+=======
+>>>>>>> 669a9ad54893becad80bc475c18459ffa5946d44:Server/Managers/Circle/manager.js
 schema.static('isNameExist', function (circleName, callback) {
     this.find({ "name": circleName }, function (err, results) {
         let response = {
@@ -114,6 +139,10 @@ schema.static('isNameExist', function (circleName, callback) {
         callback(JSONResponse);
     });
 });
+<<<<<<< HEAD:Server/Managers/Circle/manager.js
+=======
+
+>>>>>>> 669a9ad54893becad80bc475c18459ffa5946d44:Server/Managers/Circle/manager.js
 schema.static('createCircle', function (object, callback) {
     let data = new model(object);
 
