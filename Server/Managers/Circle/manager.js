@@ -130,7 +130,7 @@ schema.static('createCircle', function (object, callback) {
 });
 
 schema.static('getCircles', function (callback) {
-    model.find({}, function (err, results) {
+    this.find({}, function (err, results) {
         let response = {
             "error": false,
             "circles": []
@@ -143,11 +143,11 @@ schema.static('getCircles', function (callback) {
 
         if (results.length > 0) {
             for (var i = 0; i < results.length; i++) {
-                response.clubs.push(results[i]);
+                response.circles.push(results[i]);
             }
         }
         JSONResponse = JSON.stringify(response);
-
+        console.dir(JSONResponse);
         callback(JSONResponse);
     });
 });

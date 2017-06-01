@@ -69,9 +69,10 @@ router.route('/account/signUp').post(function (req, res) {
     });
 });
 
-router.route('/account/findAccount').post(function(req, res){
+router.route('/account/findAccount').post(function (req, res) {
     let stuNum = req.body.stuNum;
-    manager.findAccountByNum(stuNum, function(JSONResponse){
+
+    manager.findAccountByNum(stuNum, function (JSONResponse) {
         res.writeHead(200, { "Content-Type": "application/json" });
         res.write(JSONResponse);
         res.end();
