@@ -78,7 +78,9 @@ schema.static('isStuExist', function (stuNum, callback) {
 });
 
 schema.static('signUp', function (object, callback) {
+    let model = mongoose.model("accounts",schema);
     let data = new model(object);
+    console.log(data);
     let response = {
         "error": false,
         "success": false

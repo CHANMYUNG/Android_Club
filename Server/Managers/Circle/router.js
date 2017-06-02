@@ -2,6 +2,8 @@
 let router = require('express').Router();
 let manager = require('./manager');
 
+let accountManager = require('../Account/manager');
+
 router.route('/circle/getInfoByName').post(function (req, res) {
     let circleName = req.body.circleName;
     manager.getInfoByName(circleName, function (JSONResponse) {
