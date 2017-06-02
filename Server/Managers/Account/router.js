@@ -62,6 +62,8 @@ router.route('/account/signUp').post(function (req, res) {
     }
 
     let object = req.body;
+    console.log(object);
+    console.log(JSON.stringify(object));
     manager.signUp(object, function (JSONResponse) {
         res.writeHead(200, { "Content-Type": "application/json" });
         res.write(JSONResponse);
