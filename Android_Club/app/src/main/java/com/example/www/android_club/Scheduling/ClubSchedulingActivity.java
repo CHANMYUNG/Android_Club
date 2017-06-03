@@ -33,8 +33,4 @@ public class ClubSchedulingActivity extends AppCompatActivity {
         });
 
     }
-
-
-
-
 }

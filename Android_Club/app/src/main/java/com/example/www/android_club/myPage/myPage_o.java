@@ -46,14 +46,14 @@ public class myPage_o extends AppCompatActivity {
             }
         });
 
-        ImageView listMember=(ImageView) findViewById(R.id.listmember);
+        /*ImageView listMember=(ImageView) findViewById(R.id.listmember);
         listMember.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getApplicationContext(), memberListActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
     }
 }

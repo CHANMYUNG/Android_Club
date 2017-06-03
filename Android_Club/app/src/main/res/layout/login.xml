@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.www.android_club.Login.LoginActivity">
+    tools:context="com.example.www.android_club.LoginOrJoin.LoginActivity">
 
 
     <LinearLayout
@@ -46,52 +46,53 @@
                 android:textStyle="bold"></TextView>
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-                <EditText
-                    android:layout_width="280dp"
-                    android:layout_height="wrap_content"
-                    android:hint="아이디"
-                    android:layout_gravity="center"
-                    android:padding="10dp"
-                    android:textColor="#ffffff"
-                    android:textColorHint="#ffffff"
-                    android:id="@+id/idText"
-                    android:drawablePadding="10dp"
-                    android:drawableStart="@drawable/ic_person"
-                    android:drawableLeft="@drawable/ic_person"
-                    android:layout_marginTop="50dp"
-                    android:background="#DDDDDD"
-                    />
 
             <EditText
-                android:inputType="textPassword"
+                android:id="@+id/idText"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
-                android:hint="비밀번호"
                 android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:background="#DDDDDD"
+                android:drawableLeft="@drawable/ic_person"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_person"
+                android:hint="아이디"
                 android:padding="10dp"
                 android:textColor="#ffffff"
-                android:textColorHint="#ffffff"
+                android:textColorHint="#ffffff" />
+
+            <EditText
                 android:id="@+id/password"
-                android:drawablePadding="10dp"
-                android:drawableStart="@drawable/ic_lock_outline"
-                android:drawableLeft="@drawable/ic_lock_outline"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:background="#DDDDDD"
-                />
+                android:drawableLeft="@drawable/ic_lock_outline"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_lock_outline"
+                android:hint="비밀번호"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff" />
 
             <Button
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="로그인"
+                android:textColor="#000000"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                android:textColor="#000000"
-                android:text="로그인"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center"/>
+                android:id="@+id/loginButton"/>
 
             <TextView
                 android:layout_width="wrap_content"
