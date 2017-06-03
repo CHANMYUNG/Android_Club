@@ -2,15 +2,19 @@ package com.example.www.android_club.clubList;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.icu.lang.UCharacterEnums;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -151,27 +155,10 @@ public class ClubListFragment extends Fragment {
         return clubs;
     }
 
-    /*
-        public void fragmentChangeButton(final Button button, final LinearLayout linearLayout, final int checkNum){ //프레그먼트를 바꾸는 버튼
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    linearLayout.setVisibility(View.GONE); //공지사항뷰 안보이게
-                    button.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-                    button.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                    FragmentManager fragmentManager=getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-                    if(checkNum==1){
-                        fragmentTransaction.replace(R.id.fragment,new ClubListFragment());
-                        fragmentTransaction.commit();
-                    }else if(checkNum ==2){
-                        fragmentTransaction.replace(R.id.fragment,new ClubMyPage());
-                        fragmentTransaction.commit(); //프래그먼트를 띄우기
-                    }
-                }
-            });
-        }
-    */
+
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -181,6 +168,7 @@ public class ClubListFragment extends Fragment {
         addListView(clubList, (ArrayList) clubs);
         return v;
     }
+
 
     /*public void addItem(int icon,String clubName,String reader,int num){
         adapter

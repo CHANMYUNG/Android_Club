@@ -35,7 +35,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <EditText
@@ -52,6 +52,14 @@
                 android:padding="10dp"
                 android:textColor="#ffffff"
                 android:textColorHint="#ffffff" />
+            <TextView
+                android:id="@+id/idCheckText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="12dp"
+                android:text="아이디 중복 체크"/>
 
             <EditText
                 android:id="@+id/password"
@@ -70,136 +78,52 @@
                 android:textColorHint="#ffffff" />
 
             <EditText
-                android:id="@+id/userName"
+                android:id="@+id/email"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:background="#DDDDDD"
-                android:drawableLeft="@drawable/ic_name_icon"
+                android:drawableLeft="@drawable/ic_email_black_24dp"
                 android:drawablePadding="10dp"
-                android:drawableStart="@drawable/ic_name_icon"
-                android:hint="이름"
-                android:inputType="textPassword"
+                android:drawableStart="@drawable/ic_email_black_24dp"
+                android:hint="이메일"
+                android:inputType="textEmailAddress"
                 android:padding="10dp"
                 android:textColor="#ffffff"
                 android:textColorHint="#ffffff" />
 
 
-
-            <RadioGroup
-                android:id="@+id/genderGroup"
+            <EditText
+                android:id="@+id/serialKey"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/genderMan"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:checked="true"
-                android:text="남성" />
-
-            <RadioButton
-                android:id="@+id/genderGirl"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:checked="false"
-                android:text="여성" />
-            </RadioGroup>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
-            >
-            <TextView
-                android:layout_width="40dp"
-                android:layout_height="wrap_content" />
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="#DDDDDD"
+                android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_vpn_key_black_24dp"
+                android:hint="시리얼 키 입력"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff" />
 
             <TextView
-                android:layout_width="120dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:text="소속동아리"
-                android:textStyle="bold"></TextView>
-
-            <Spinner
-                android:id="@+id/club"
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"></Spinner>
+                android:text="시리얼 키 유효성 검사"
+                android:textColor="#000000"
+                android:textSize="12dp"
+                android:textStyle="bold"/>
 
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
-            
-            <TextView
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"/>
-            <Spinner
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:id="@+id/clubGrade">
-            </Spinner>
-
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:text="학년"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:textStyle="bold">
-            </TextView>
-            <Spinner
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:id="@+id/clubClass">
-            </Spinner>
-
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:text="반"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:textStyle="bold">
-            </TextView>
-
-            <Spinner
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:id="@+id/clubClassNum">
-
-            </Spinner>
-
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:text="번호"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:textStyle="bold">
-            </TextView>
-
-        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -210,7 +134,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:text="로그인"
+            android:text="회원가입"
             android:textColor="#000000"
             android:textSize="20dp"
             android:textStyle="bold" />
@@ -221,7 +145,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:text="회원가입"
+            android:text="로그인 화면 가긴"
             android:textSize="18dp" />
 
         </LinearLayout>

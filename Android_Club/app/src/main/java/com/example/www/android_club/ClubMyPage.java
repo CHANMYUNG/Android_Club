@@ -1,12 +1,20 @@
 package com.example.www.android_club;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.Toast;
+
+import com.example.www.android_club.Scheduling.ClubSchedulingActivity;
+import com.example.www.android_club.memberList.memberListActivity;
+import com.example.www.android_club.myPage.myPage_o;
 
 
 /**
@@ -64,6 +72,17 @@ public class ClubMyPage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+        View v=inflater.inflate(R.layout.mypage_club_o,container,false);
+        CalendarView calendarView = (CalendarView) v.findViewById(R.id.calendar);
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+               /* Toast.makeText(, "" + year + "/" + (month + 1) + "/" + dayOfMonth, 0).show();
+                Intent intent=new Intent(getActivity(), ClubSchedulingActivity.class);
+                startActivity(intent);*/
+            }
+        });
+
         return inflater.inflate(R.layout.fragment_club_my_page, container, false);
     }
 

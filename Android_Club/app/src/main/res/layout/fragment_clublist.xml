@@ -16,9 +16,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
             android:background="#DDDDDD"
             android:drawableLeft="@drawable/ic_web_black_24dp"
             android:drawablePadding="10dp"
@@ -29,7 +29,7 @@
             android:textColorHint="#ffffff" />
 
 
-            <ListView
+        <ListView
             android:id="@+id/clubListView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -37,9 +37,6 @@
             android:divider="#EEEEEE"
             android:dividerHeight="15dp"></ListView>
     </LinearLayout>
-
-
-
 
 
 </FrameLayout>

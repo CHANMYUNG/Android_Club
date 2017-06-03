@@ -22,30 +22,30 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
 
-        setSpinnerItemGrade(spinner);
-        setSpinnerItemClass(spinner);
-        setSpinnerItemClassNum(spinner);
+//        setSpinnerItemGrade(spinner);
+//        setSpinnerItemClass(spinner);
+//        setSpinnerItemClassNum(spinner);
 
 
 
     }
 
-    public void setSpinnerItemGrade(Spinner spinner){
-        spinner=(Spinner)findViewById(R.id.clubGrade);
-        adapter=ArrayAdapter.createFromResource(this,R.array.clubGrade,android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-    }
-
-    public void setSpinnerItemClass(Spinner spinner){
-        spinner=(Spinner)findViewById(R.id.clubClass);
-        adapter=ArrayAdapter.createFromResource(this,R.array.clubClass,android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-    }
-
-    public void setSpinnerItemClassNum(Spinner spinner){
-        spinner=(Spinner)findViewById(R.id.clubClassNum);
-        adapter=ArrayAdapter.createFromResource(this,R.array.clubClassNum,android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-    }
+//    public void setSpinnerItemGrade(Spinner spinner){
+//        spinner=(Spinner)findViewById(R.id.clubGrade);
+//        adapter=ArrayAdapter.createFromResource(this,R.array.clubGrade,android.R.layout.simple_spinner_dropdown_item);
+//        spinner.setAdapter(adapter);
+//    }
+//
+//    public void setSpinnerItemClass(Spinner spinner){
+//        spinner=(Spinner)findViewById(R.id.clubClass);
+//        adapter=ArrayAdapter.createFromResource(this,R.array.clubClass,android.R.layout.simple_spinner_dropdown_item);
+//        spinner.setAdapter(adapter);
+//    }
+//
+//    public void setSpinnerItemClassNum(Spinner spinner){
+//        spinner=(Spinner)findViewById(R.id.clubClassNum);
+//        adapter=ArrayAdapter.createFromResource(this,R.array.clubClassNum,android.R.layout.simple_spinner_dropdown_item);
+//        spinner.setAdapter(adapter);
+//    }
 
 }
