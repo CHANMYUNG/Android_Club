@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import com.example.www.android_club.RecyclerView.RecruitFragment;
 import com.example.www.android_club.clubList.ClubListFragment;
 
 import java.util.ArrayList;
@@ -38,6 +39,7 @@ public class SubMainActivity extends AppCompatActivity {
 
         final Button clubListButton=(Button)findViewById(R.id.clubView);
         final Button clubMyButton=(Button)findViewById(R.id.CurrentMyPage);
+        final Button clubIntro=(Button)findViewById(R.id.introCircleButton);
         final LinearLayout notice=(LinearLayout)findViewById(R.id.notice);
 
         clubListButton.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +49,7 @@ public class SubMainActivity extends AppCompatActivity {
                 FragmentManager fragmentManager=getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
                 clubMyButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                clubIntro.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
 
                 clubListButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 fragmentTransaction.replace(R.id.fragment, new ClubListFragment());
@@ -61,8 +64,25 @@ public class SubMainActivity extends AppCompatActivity {
                 FragmentManager fragmentManager=getSupportFragmentManager();
                 clubListButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
                 FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                clubIntro.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+
                 clubMyButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 fragmentTransaction.replace(R.id.fragment, new ClubMyPage());
+                fragmentTransaction.commit();
+            }
+        });
+
+        clubIntro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                notice.setVisibility(View.GONE); //공지사항뷰 안보이게
+                FragmentManager fragmentManager=getSupportFragmentManager();
+                clubMyButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+
+                clubListButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                clubIntro.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                fragmentTransaction.replace(R.id.fragment, new RecruitFragment());
                 fragmentTransaction.commit();
             }
         });
