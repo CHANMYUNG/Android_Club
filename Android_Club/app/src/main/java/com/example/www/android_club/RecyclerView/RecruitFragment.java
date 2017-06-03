@@ -1,31 +1,28 @@
-package com.example.www.android_club;
+package com.example.www.android_club.RecyclerView;
 
-import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CalendarView;
-import android.widget.Toast;
 
-import com.example.www.android_club.Scheduling.ClubSchedulingActivity;
-import com.example.www.android_club.memberList.memberListActivity;
-import com.example.www.android_club.myPage.myPage_o;
+import com.example.www.android_club.R;
+
+import java.util.ArrayList;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ClubMyPage.OnFragmentInteractionListener} interface
+ * {@link RecruitFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ClubMyPage#newInstance} factory method to
+ * Use the {@link RecruitFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ClubMyPage extends Fragment {
+public class RecruitFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -37,8 +34,8 @@ public class ClubMyPage extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public ClubMyPage() {
-
+    public RecruitFragment() {
+        // Required empty public constructor
     }
 
     /**
@@ -47,11 +44,11 @@ public class ClubMyPage extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ClubMyPage.
+     * @return A new instance of fragment RecruitFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ClubMyPage newInstance(String param1, String param2) {
-        ClubMyPage fragment = new ClubMyPage();
+    public static RecruitFragment newInstance(String param1, String param2) {
+        RecruitFragment fragment = new RecruitFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -66,34 +63,30 @@ public class ClubMyPage extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        View v=inflater.inflate(R.layout.fragment_recruit,container,false);
+        RecyclerView recyclerView=(RecyclerView)v.findViewById(R.id.recyclerView);
+        LinearLayoutManager layoutManager;
+        layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
 
-        final View v=inflater.inflate(R.layout.fragment_club_my_page,container,false);
-        CalendarView calendarView = (CalendarView) v.findViewById(R.id.calendar);
-        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-               /* Toast.makeText(v, "" + year + "/" + (month + 1) + "/" + dayOfMonth, 0).show();
-                Intent intent=new Intent(getActivity(), ClubSchedulingActivity.class);
-                startActivity(intent);*/
-            }
-        });
+        ArrayList<CircleData> items=new ArrayList<>();
+        items.add(new CircleData("시나브로","1학년 2명 모집",R.drawable.dsmlogo));
+        items.add(new CircleData("시나브루","2학년 2명 모집",R.drawable.dsmlogo));
+        items.add(new CircleData("시나브롱","3학년 2명 모집",R.drawable.dsmlogo));
 
-        Button button = (Button) v.findViewById(R.id.next_memberList);
-        button.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), memberListActivity.class);
-                startActivity(intent);
 
-            }
-        });
+        recyclerView.setAdapter(new RecyclerViewAdapter(getActivity(),items,R.layout.recruit_recyclertview_item));
+
+
+
+
 
         return v;
     }
@@ -104,6 +97,7 @@ public class ClubMyPage extends Fragment {
             mListener.onFragmentInteraction(uri);
         }
     }
+
 
     @Override
     public void onDetach() {
