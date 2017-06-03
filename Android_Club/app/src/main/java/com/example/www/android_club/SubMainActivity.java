@@ -1,8 +1,8 @@
 package com.example.www.android_club;
 
 
-import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -35,14 +35,38 @@ public class SubMainActivity extends AppCompatActivity {
 
         addListView(noticeListView, (ArrayList) noticeList);
 
-        final int checkNumClubList=1;
-        final int checkNumMyList=2;
+
         final Button clubListButton=(Button)findViewById(R.id.clubView);
         final Button clubMyButton=(Button)findViewById(R.id.CurrentMyPage);
         final LinearLayout notice=(LinearLayout)findViewById(R.id.notice);
 
-        fragmentChangeButton(clubListButton,notice,checkNumClubList);
-        fragmentChangeButton(clubMyButton,notice,checkNumMyList);
+        clubListButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                notice.setVisibility(View.GONE); //공지사항뷰 안보이게
+                FragmentManager fragmentManager=getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                clubMyButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+
+                clubListButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                fragmentTransaction.replace(R.id.fragment, new ClubListFragment());
+                fragmentTransaction.commit();
+            }
+        });
+
+        clubMyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                notice.setVisibility(View.GONE); //공지사항뷰 안보이게
+                FragmentManager fragmentManager=getSupportFragmentManager();
+                clubListButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                clubMyButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                fragmentTransaction.replace(R.id.fragment, new ClubMyPage());
+                fragmentTransaction.commit();
+            }
+        });
+
     }
 
     public  void addListView(ListView listView, ArrayList arrayList){
@@ -59,25 +83,7 @@ public class SubMainActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
-    public void fragmentChangeButton(final Button button, final LinearLayout linearLayout, final int checkNum){ //프레그먼트를 바꾸는 버튼
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                linearLayout.setVisibility(View.GONE); //공지사항뷰 안보이게
-                button.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-                button.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                FragmentManager fragmentManager=getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-                if(checkNum==1){
-                    fragmentTransaction.replace(R.id.fragment,new ClubListFragment());
-                    fragmentTransaction.commit();
-                }else if(checkNum ==2){
-                    fragmentTransaction.replace(R.id.fragment,new ClubMyPage());
-                    fragmentTransaction.commit(); //프래그먼트를 띄우기
-                }
-            }
-        });
-    }
+
 
 
 }

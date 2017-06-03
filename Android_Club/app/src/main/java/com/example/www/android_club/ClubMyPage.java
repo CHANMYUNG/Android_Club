@@ -38,7 +38,7 @@ public class ClubMyPage extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     public ClubMyPage() {
-        // Required empty public constructor
+
     }
 
     /**
@@ -66,6 +66,8 @@ public class ClubMyPage extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
@@ -73,17 +75,27 @@ public class ClubMyPage extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View v=inflater.inflate(R.layout.mypage_club_o,container,false);
+        final View v=inflater.inflate(R.layout.fragment_club_my_page,container,false);
         CalendarView calendarView = (CalendarView) v.findViewById(R.id.calendar);
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-               /* Toast.makeText(, "" + year + "/" + (month + 1) + "/" + dayOfMonth, 0).show();
+               /* Toast.makeText(v, "" + year + "/" + (month + 1) + "/" + dayOfMonth, 0).show();
                 Intent intent=new Intent(getActivity(), ClubSchedulingActivity.class);
                 startActivity(intent);*/
             }
         });
 
-        return inflater.inflate(R.layout.fragment_club_my_page, container, false);
+        Button button = (Button) v.findViewById(R.id.next_memberList);
+        button.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), memberListActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

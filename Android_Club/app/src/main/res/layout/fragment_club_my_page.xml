@@ -23,7 +23,7 @@
             android:layout_marginLeft="30dp"
             android:text="Name"
             android:textColor="#3D4341"
-            android:textSize="45dp" />
+            android:textSize="20dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -39,13 +39,13 @@
             android:layout_marginLeft="150dp"
             android:text="Club"
             android:textColor="#2F3335"
-            android:textSize="50dp" />
+            android:textSize="20dp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="5dp"
         android:background="#DDDDDD">
@@ -71,24 +71,22 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
             android:id="@+id/next_memberList"
-            android:layout_width="250dp"
-            android:layout_height="100dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
+            android:layout_weight="1"
             android:text="회원 목록"/>
 
-
         <Button
-            android:layout_width="250dp"
-            android:layout_height="100dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:layout_marginRight="8dp"
             android:text="일정"/>
-
-
-
     </LinearLayout>
 
     </LinearLayout>

@@ -52,15 +52,15 @@
             android:layout_marginTop="8dp"
             android:layout_marginRight="9dp"/>
     </LinearLayout>
-    
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/notice"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/notice"
             android:orientation="vertical">
 
             <LinearLayout
@@ -90,20 +90,18 @@
             </LinearLayout>
 
             <ListView
+                android:id="@+id/noticeListView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/noticeListView"
                 android:layout_margin="10dp"
-                android:dividerHeight="10dp"
-                android:divider="#DDDDDD">
-            </ListView>
+                android:divider="#DDDDDD"
+                android:dividerHeight="10dp"></ListView>
         </LinearLayout>
 
         <RelativeLayout
+            android:id="@+id/fragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/fragment">
-        </RelativeLayout>
+            android:layout_height="match_parent"></RelativeLayout>
 
     </FrameLayout>
 
