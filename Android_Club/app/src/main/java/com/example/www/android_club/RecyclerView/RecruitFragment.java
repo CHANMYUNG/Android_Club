@@ -77,9 +77,9 @@ public class RecruitFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         ArrayList<CircleData> items=new ArrayList<>();
-        items.add(new CircleData("시나브로","1학년 2명 모집",R.drawable.dsmlogo));
-        items.add(new CircleData("시나브루","2학년 2명 모집",R.drawable.dsmlogo));
-        items.add(new CircleData("시나브롱","3학년 2명 모집",R.drawable.dsmlogo));
+        items.add(new CircleData("시나브로","1학년 2명 모집","2017-6-4",R.drawable.dsmlogo));
+        items.add(new CircleData("시나브루","2학년 2명 모집","2017-6-5",R.drawable.dsmlogo));
+        items.add(new CircleData("시나브롱","3학년 2명 모집","2017-6-6",R.drawable.dsmlogo));
 
 
         recyclerView.setAdapter(new RecyclerViewAdapter(getActivity(),items,R.layout.recruit_recyclertview_item));
