@@ -90,9 +90,9 @@ router.route('/account/logout').post(function (req, res) {
 
 });
 
-router.route('/account/getCircleInfo').post(function (req, res) {
+router.route('/account/getUserInfo').post(function (req, res) {
     if (!req.session.user) {
-        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.writeHead(200, { 'Content-Type': 'application/json' }); 
         res.write(JSON.stringify({
             session: false
         }));
@@ -106,4 +106,5 @@ router.route('/account/getCircleInfo').post(function (req, res) {
         res.end();
     });
 });
+
 module.exports = router;

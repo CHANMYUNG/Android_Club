@@ -18,9 +18,9 @@ router.route('/circle/canFound').post(function (req, res) {
         response.session = true;
         if (!req.session.user.circle_id) {
             response.able = true;
-        }
+        }   
     }
-    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.writeHead(200, { 'Content-Type': 'application/json' }); 
     res.write(JSON.stringify(response));
     res.end();
 });
@@ -43,6 +43,24 @@ router.route('/circle/found').post(function (req, res) {
         res.write(JSONResponse);
         res.end();
     });
+});
+
+router.route('/circle/getCircle').post(function (req, res) {
+    if (!req.session.user) {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.write(JSON.stringify({
+            session: false
+        }));
+        res.end();
+        return;
+    }
+    let circle_id = req.session.user.circle_id;
+    console.log(circle_id);
+    manager.getCircle(circle_id, function (JSONResponse) {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.write(JSONResponse);
+        res.end();
+    })
 });
 
 module.exports = router;
