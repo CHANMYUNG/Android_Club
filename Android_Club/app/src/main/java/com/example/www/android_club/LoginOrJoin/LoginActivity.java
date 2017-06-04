@@ -56,24 +56,29 @@ public class LoginActivity extends AppCompatActivity {
         final EditText editTextId=(EditText)findViewById(R.id.id);
         final EditText editTextPassword=(EditText)findViewById(R.id.password);
 
-        final String id=editTextId.getText().toString();
-        final String password=editTextPassword.getText().toString();
+
+
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (id.length() == 0 || password.length() == 0) {
+                    String id=editTextId.getText().toString().trim();
+                    String password=editTextPassword.getText().toString().trim();
+
+             if (id.length() == 0 || password.length() == 0  ) {
+
                     //아이디 비밀번호를 입력을 안한 경우
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                    Dialog dialog = builder.setMessage("아이디 비밀번호을 입력 해주세요").setNegativeButton("다시시도", null).create();
+                    Dialog dialog = builder.setMessage("올바른 아이디 비밀번호을 입력 해주세요").setNegativeButton("다시시도", null).create();
                     dialog.show();
                 } else {
                     // 정상적으로 입력한 경우
                     aq = new AQuery(loginButton);
-                    Map<String, Object> params = new HashMap<>();
+                    final Map<String, Object> params = new HashMap<>();
                     params.put("id",id);
                     params.put("password",password);
                     aq.ajax("http://13.124.15.202:80/account/login", params, String.class, new AjaxCallback<String>() {
+
                         @Override
                         public void callback(String url, String response /* ResponseType responseValue */, AjaxStatus status) {
                             try {
@@ -81,26 +86,28 @@ public class LoginActivity extends AppCompatActivity {
                                 if (object.getBoolean("error")) {
                                     Toast.makeText(getApplicationContext(), "잠시후에 시도해주세요", Toast.LENGTH_SHORT).show();
                                     return;
-                                } else if (object.getBoolean("success") == true) {
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                                    Dialog dialog = builder.setMessage("로그인에 성공했습니다").setPositiveButton("확인", null).create();
-                                    dialog.show();
-                                    Intent intent = new Intent(LoginActivity.this, SubMainActivity.class);
-                                    LoginActivity.this.startActivity(intent);
-                                    finish(); //현재 액티비티 종료
                                 } else {
-                                    //로그인 비밀번호 불일치
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                                    dialog = builder.setMessage("계정을 다시 확인 하세요").setNegativeButton("다시시도", null).create();
-                                    dialog.show();
+                                    Toast.makeText(getApplicationContext(),response.toString(), Toast.LENGTH_SHORT).show();
+                                    if (object.getBoolean("success") == true) {
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                                        Dialog dialog = builder.setMessage("로그인에 성공했습니다").setPositiveButton("okay", null).create();
+                                        dialog.show();
+                                        Intent intent = new Intent(LoginActivity.this, SubMainActivity.class);
+
+                                        LoginActivity.this.startActivity(intent);
+                                        finish(); //현재 액티비티 종료
+                                    } else {
+                                        //로그인 비밀번호 불일치
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                                        dialog = builder.setMessage("계정을 다시 확인 하세요").setNegativeButton("다시시도", null).create();
+                                        dialog.show();
+                                    }
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                         }
                     });
-                    Intent intent = new Intent(getApplicationContext(), SubMainActivity.class);
-                    startActivity(intent);
                 }
             }
         });

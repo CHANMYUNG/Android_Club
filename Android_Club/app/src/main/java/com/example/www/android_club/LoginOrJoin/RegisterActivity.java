@@ -23,19 +23,21 @@ public class RegisterActivity extends AppCompatActivity {
     private Spinner spinner;
     AQuery aq;
 
+    EditText idEditText=(EditText)findViewById(R.id.joinId);
+    EditText passwordEditText=(EditText)findViewById(R.id.joinPassword);
+    EditText emailEditText=(EditText)findViewById(R.id.joinEmail);
+    EditText serialKeyEditText=(EditText)findViewById(R.id.serialKey);
+    TextView backLoginView=(TextView)findViewById(R.id.backLoginView);
+
+    Button joinRegisterButton=(Button)findViewById(R.id.registerCheckButton);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
 
-        EditText idEditText=(EditText)findViewById(R.id.joinId);
-        EditText passwordEditText=(EditText)findViewById(R.id.joinPassword);
-        EditText emailEditText=(EditText)findViewById(R.id.joinEmail);
-        EditText serialKeyEditText=(EditText)findViewById(R.id.serialKey);
-        TextView backloginView=(TextView)findViewById(R.id.backLoginView);
 
-        Button joinRegisterButton=(Button)findViewById(R.id.registerButton);
 
         joinRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,8 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
 
             }
         });
-
-        backloginView.setOnClickListener(new View.OnClickListener() {
+        backLoginView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(RegisterActivity.this,LoginActivity.class);
