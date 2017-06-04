@@ -84,7 +84,7 @@ public class RecruitFragment extends Fragment {
         items.add(new CircleData("시나브루","2학년 2명 모집","2017-6-5",R.drawable.dsmlogo));
         items.add(new CircleData("시나브롱","3학년 2명 모집","2017-6-6",R.drawable.dsmlogo));
 
-        Button clubCreate=(Button)v.findViewById(R.id.createCircle);
+        Button clubCreate=(Button)v.findViewById(R.id.createCircleCheck);
 
         clubCreate.setOnClickListener(new View.OnClickListener() {
             @Override

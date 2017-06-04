@@ -39,7 +39,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/idText"
+                android:id="@+id/joinId"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -62,7 +62,7 @@
                 android:text="아이디 중복 체크"/>
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/joinPassword"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -78,7 +78,7 @@
                 android:textColorHint="#ffffff" />
 
             <EditText
-                android:id="@+id/email"
+                android:id="@+id/joinEmail"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -130,6 +130,7 @@
             android:orientation="vertical">
 
         <Button
+            android:id="@+id/registerButton"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -140,7 +141,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/registerButton"
+            android:id="@+id/backLoginView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
