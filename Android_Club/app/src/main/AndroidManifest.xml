@@ -47,6 +47,10 @@
         <activity android:name=".SubMainActivity">
 
         </activity>
+
+        <activity android:name=".circleCreatePage.CircleCreateActivity">
+
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET"/>

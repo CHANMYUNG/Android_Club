@@ -48,6 +48,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.image.setBackground(drawable);
         holder.circleText.setText(item.getCircleText());
         holder.circleContext.setText(item.getCircleContext());
+        holder.circleDate.setText(item.getCircleDate());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
                 Toast.makeText(context,item.getCircleText(),Toast.LENGTH_SHORT).show();
@@ -63,6 +64,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     class ViewHolder extends RecyclerView.ViewHolder{
         ImageView image;
         TextView circleText;
+        TextView circleDate;
         TextView circleContext;
         CardView cardView;
 
@@ -72,12 +74,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             cardView=(CardView) itemView.findViewById(R.id.cardView);
             circleText=(TextView) itemView.findViewById(R.id.circleNameTextView);
             circleContext=(TextView) itemView.findViewById(R.id.circleContentTextView);
+            circleDate=(TextView)itemView.findViewById(R.id.circleDate);
         }
     }
 }
 class CircleData{
     String CircleText;
     String CircleContext;
+
+    public String getCircleDate() {
+        return CircleDate;
+    }
+
+    public void setCircleDate(String circleDate) {
+        CircleDate = circleDate;
+    }
+
+    String CircleDate;
     int img;
 
     public String getCircleText() {
@@ -105,9 +118,10 @@ class CircleData{
     }
 
 
-    public CircleData(String circleText,String circleContext,int img){
+    public CircleData(String circleText,String circleContext,String circleDate,int img){
         this.CircleContext=circleContext;
         this.CircleText=circleText;
+        this.CircleDate=circleDate;
         this.img=img;
     }
 }

@@ -5,10 +5,36 @@
     tools:context="com.example.www.android_club.RecyclerView.RecruitFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <android.support.v7.widget.RecyclerView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/createCircleCheck"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="동아리 개설"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:background="#DDDDDDDD"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
+
+            />
+
+
+
+
+        <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:scrollbars="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
+
+    </LinearLayout>
 </FrameLayout>

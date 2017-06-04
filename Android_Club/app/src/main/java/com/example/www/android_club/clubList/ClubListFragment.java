@@ -91,6 +91,8 @@ public class ClubListFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
         aq = new AQuery(getActivity());
         Map<String, Object> params = new HashMap<>();
         aq.ajax("http://13.124.15.202:80/circle/getCircles", params, String.class, new AjaxCallback<String>(){

@@ -1,6 +1,7 @@
 package com.example.www.android_club;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -11,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.www.android_club.RecyclerView.RecruitFragment;
+import com.example.www.android_club.circleCreatePage.CircleCreateActivity;
 import com.example.www.android_club.clubList.ClubListFragment;
 
 import java.util.ArrayList;
@@ -36,11 +38,11 @@ public class SubMainActivity extends AppCompatActivity {
 
         addListView(noticeListView, (ArrayList) noticeList);
 
-
         final Button clubListButton=(Button)findViewById(R.id.clubView);
         final Button clubMyButton=(Button)findViewById(R.id.CurrentMyPage);
         final Button clubIntro=(Button)findViewById(R.id.introCircleButton);
         final LinearLayout notice=(LinearLayout)findViewById(R.id.notice);
+
 
         clubListButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +104,8 @@ public class SubMainActivity extends AppCompatActivity {
         adapter= new NoticeListAdapter(getApplicationContext(),arrayList);
         listView.setAdapter(adapter);
     }
+
+
 
 
 
