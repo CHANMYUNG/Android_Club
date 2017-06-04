@@ -10,16 +10,16 @@ public class Club {
 
     int image;
     String clubName;
-    String reader;
+    String leader;
     int memberNum;
 
     public Club(){
 
     }
-    public Club(int image, String clubName, String reader, int memberNum) {
+    public Club(int image, String clubName, String leader, int memberNum) {
         this.image = image;
         this.clubName = clubName;
-        this.reader = reader;
+        this.leader = leader;
         this.memberNum = memberNum;
     }
 
@@ -41,12 +41,12 @@ public class Club {
         this.clubName = clubName;
     }
 
-    public String getReader() {
-        return reader;
+    public String getLeader() {
+        return leader;
     }
 
-    public void setReader(String reader) {
-        this.reader = reader;
+    public void setLeader(String leader) {
+        this.leader = leader;
     }
 
     public int getMemberNum() {
