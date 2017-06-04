@@ -3,7 +3,7 @@
 
 <item android:state_pressed="true" android:state_focused="true">
     <shape>
-        <solid android:color="#FF8000"/>
+        <solid android:color="#CCCCCC"/>
         <stroke
             android:width="2.3dp"
             android:color="#DDDDDD" />
@@ -14,7 +14,7 @@
 
 <item android:state_pressed="true" android:state_focused="false">
     <shape>
-        <solid android:color="#FF8000"/>
+        <solid android:color="#CCCCCC"/>
         <stroke
             android:width="2.3dp"
             android:color="#DDDDDD" />
@@ -25,7 +25,7 @@
 
 <item android:state_pressed="false" android:state_focused="true">
     <shape>
-        <solid android:color="#FFFFFF"/>
+        <solid android:color="#CCCCCC"/>
         <stroke
             android:width="2.3dp"
             android:color="#DDDD" />

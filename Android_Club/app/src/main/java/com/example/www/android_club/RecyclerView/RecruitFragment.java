@@ -1,5 +1,6 @@
 package com.example.www.android_club.RecyclerView;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,8 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.www.android_club.R;
+import com.example.www.android_club.circleCreatePage.CircleCreateActivity;
 
 import java.util.ArrayList;
 
@@ -81,11 +84,17 @@ public class RecruitFragment extends Fragment {
         items.add(new CircleData("시나브루","2학년 2명 모집","2017-6-5",R.drawable.dsmlogo));
         items.add(new CircleData("시나브롱","3학년 2명 모집","2017-6-6",R.drawable.dsmlogo));
 
+        Button clubCreate=(Button)v.findViewById(R.id.createCircle);
+
+        clubCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(), CircleCreateActivity.class);
+                startActivity(intent);
+            }
+        });
 
         recyclerView.setAdapter(new RecyclerViewAdapter(getActivity(),items,R.layout.recruit_recyclertview_item));
-
-
-
 
 
         return v;
