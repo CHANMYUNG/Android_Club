@@ -32,6 +32,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 
@@ -91,41 +92,6 @@ public class ClubListFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
-        aq = new AQuery(getActivity());
-        Map<String, Object> params = new HashMap<>();
-        aq.ajax("http://13.124.15.202:80/circle/getCircles", params, String.class, new AjaxCallback<String>(){
-            @Override
-            public void callback(String url, String response /* ResponseType responseValue */, AjaxStatus status)
-            {
-                try {
-                    JSONObject object = new JSONObject(response);
-                    if(object.getBoolean("error")) {
-                        Toast.makeText(getActivity(), "에러발생", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    JSONArray circles = object.getJSONArray("circles");
-                    for(int i = 0 ; i < circles.length(); i ++){
-                        JSONObject circle = (JSONObject) circles.get(i);
-                        clubs.add(new Club(R.drawable.dsmlogo, circle.getString("name"), Integer.toString(circle.getInt("leader")), circle.getInt("size")));
-                    }
-
-                    adapter= new ClubListAdapter(getActivity(),clubs);
-                    clubList.setAdapter(adapter);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-    }
-
-    public void addListView(ListView listView, ArrayList arrayList){
-
-        adapter= new ClubListAdapter(getActivity(),getCircles());
-        clubList.setAdapter(adapter);
-
     }
 
     private List<Club> getCircles() {
@@ -140,12 +106,12 @@ public class ClubListFragment extends Fragment {
                     if(object.getBoolean("error")) {
                         Toast.makeText(getActivity(), "에러발생", Toast.LENGTH_SHORT).show();
                         return;
-                    }
-                    JSONArray circles = object.getJSONArray("circles");
-                    for(int i = 0 ; i < circles.length(); i ++){
-                        JSONObject circle = (JSONObject) circles.get(i);
-                        Toast.makeText(getActivity(), circle.getString("name"), Toast.LENGTH_SHORT).show();
-                        clubs.add(new Club(R.drawable.dsmlogo, circle.getString("name"), Integer.toString(circle.getInt("leader")), circle.getInt("size")));
+                    }else {
+                        JSONArray circles = object.getJSONArray("circles");
+                        for (int i = 0; i < circles.length(); i++) {
+                            JSONObject circle = (JSONObject) circles.get(i);
+                            clubs.add(new Club(R.drawable.dsmlogo, circle.getString("name"), Integer.toString(circle.getInt("leader")), circle.getInt("size")));
+                        }
                     }
                 } catch (JSONException e) {
                     Toast.makeText(getActivity(), "ERROR", Toast.LENGTH_SHORT).show();
@@ -153,23 +119,87 @@ public class ClubListFragment extends Fragment {
                 }
             }
         });
-        clubs.add(new Club(R.drawable.dsmlogo, "시나브로", "강석직", 5));
         return clubs;
     }
 
 
-
-
+    private ClubListAdapter clubListAdapter;
+    private ArrayList<Club> items;
+    private ArrayList<Club> saveItems=new ArrayList<>();
+    private View v;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View v=inflater.inflate(R.layout.fragment_clublist,container,false);
-        clubList=(ListView)v.findViewById(R.id.clubListView);
-        addListView(clubList, (ArrayList) clubs);
+        circleList(v);
+        doSearch(v);
+
         return v;
     }
+
+    private void doSearch(View v){
+
+        final EditText circleSearchEditText=(EditText)v.findViewById(R.id.searchCircleEdit);
+
+        circleSearchEditText.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String text=circleSearchEditText.getText().toString().toLowerCase(Locale.getDefault());
+                filter(text);
+            }
+        });
+    }
+
+    private  void circleList(View v){
+        items=new ArrayList<>();
+        items.addAll(getCircles());
+        saveItems.addAll(items);
+        clubList=(ListView) v.findViewById(R.id.clubListView);
+        clubListAdapter=new ClubListAdapter(getActivity().getApplicationContext(),R.id.notice,items);
+        clubList.setAdapter(clubListAdapter);
+    }
+
+    public void filter(String searchText){
+        saveItems.clear();
+        if(searchText.length()==0){
+            saveItems.addAll(items);
+        }else{
+            for(Club club:items){
+                if(club.getClubName().toLowerCase(Locale.getDefault()).contains(searchText)){
+                    saveItems.add(club);
+                }
+            }
+
+            clubListAdapter.clubList = saveItems;
+        }
+        clubListAdapter.notifyDataSetChanged();
+    }
+   /* public void searchCircle( String searchText){
+        saveItems.clear();
+        if(searchText.length()==0){
+            saveItems.addAll(items);
+        }else{
+            for(Club club:items){
+                if(club.getClubName().contains(searchText)){
+                    saveItems.add(club);
+                }
+            }
+        }
+        clubListAdapter.notifyDataSetChanged();
+    }*/
 
 
     /*public void addItem(int icon,String clubName,String reader,int num){
