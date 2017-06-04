@@ -28,7 +28,7 @@ router.route('/circle/canFound').post(function (req, res) {
 router.route('/circle/found').post(function (req, res) {
     if (!req.session.user) {
         res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.write(JSOㅌN.stringify({
+        res.write(JSON.stringify({
             session: false
         }));
         res.end();
