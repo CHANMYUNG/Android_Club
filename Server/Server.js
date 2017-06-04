@@ -8,15 +8,22 @@ let static = require('serve-static');
 let errorHandler = require('errorhandler');
 let expressSession = require('express-session');
 let app = express()
-let router = express.Router();
+
 let mongoose = require('mongoose');
+let mysql = require('mysql');
 
-// database instance 
-let database;
 
-// Managers
-let accountRouter = require('./Managers/Account/router');
-let circleRouter = require('./Managers/Circle/router');
+let accountRouter = require('./Account/router');
+let circleRouter = require('./Circle/router');
+
+let pool = mysql.createPool({
+    connectionLimit : 10,
+    host : 'localhost',
+    user : 'root',
+    password : 'xogns1228',
+    database : 'Arirang',
+    debug : false
+});
 
 
 // on Mac :: 8080,
@@ -34,31 +41,9 @@ app.use(expressSession({
     saveUninitialized : true
 }));
 
-function connectDB(){
-    let databaseUrl = "mongodb://localhost:27017/Arirang";
+app.use('/', accountRouter);
+app.use('/', circleRouter);
 
-    console.log('trying to connect DB');
-
-    mongoose.Promise = global.Promise;
-    mongoose.connect(databaseUrl);
-    database = mongoose.connection;
-
-    database.on('error', console.error.bind(console, 'database connection error'));
-
-    database.on('open', function(){
-        console.log('Database Connection Succeed');
-    });
-
-    database.on('disconnect', function(){
-        console.log("Database connection lost. Server will retry in 5 secs");
-        setInterval(connectDB, 5000);
-    })
-
-}
-
-app.use('/',accountRouter);
-app.use('/',circleRouter);
 http.createServer(app).listen(app.get('port'), function(){
     console.log('Server started on '+app.get('port')+'port');
-    connectDB();
 });
