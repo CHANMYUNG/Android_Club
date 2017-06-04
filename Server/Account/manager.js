@@ -107,4 +107,25 @@ manager.findAll = function (callback) {
     });
 };
 
+manager.getUserInfo = function (uid, callback) {
+    let response = {
+        session: true,
+        error: false,
+        user: null,
+        circle: null
+    }
+    let JSONResponse;
+    console.log(uid);
+    conn.query("select a.name, c.name as circle from account as a inner join  circle as c on a.circle_id = c.id where a.uid = ?", uid, function (err, rows) {
+        if (err) {
+            response.error = true;
+        } else if (rows.length == 1) {
+            response.user = rows[0].name;
+            response.circle = rows[0].circle;
+        }
+        JSONResponse = JSON.stringify(response);
+        callback(JSONResponse);
+    });
+};
+
 module.exports = manager;
