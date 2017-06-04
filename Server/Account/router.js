@@ -56,7 +56,7 @@ router.route('/account/login').post(function (req, res) {
         if (response.success) {
             req.session.user = {
                 uid: response.uid,
-                circle_id : response.circle_id,
+                circle_id: response.circle_id,
                 authorized: true
             };
         }
@@ -89,4 +89,22 @@ router.route('/account/logout').post(function (req, res) {
     }
 
 });
+
+router.route('/account/getUserInfo').post(function (req, res) {
+    if (!req.session.user) {
+        res.writeHead(200, { 'Content-Type': 'application/json' }); 
+        res.write(JSON.stringify({
+            session: false
+        }));
+        res.end();
+        return;
+    }
+    let uid = req.session.user.uid;
+    manager.getUserInfo(uid, function (JSONResponse) {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.write(JSONResponse);
+        res.end();
+    });
+});
+
 module.exports = router;
