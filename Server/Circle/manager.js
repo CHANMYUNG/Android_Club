@@ -49,7 +49,7 @@ manager.found = function (name, uid, intro, callback) {
         success: false
     };
     let JSONResponse;
-    conn.query("insert into circle values((select count(c.name)+1 from circle as c),(select name from account where uid=?),?,?)", [name, uid, intro], function (err, result) {
+    conn.query("insert into circle values((select count(c.name)+1 from circle as c),(select num from account where uid=?),?,?)", [name, uid, intro], function (err, result) {
         if (err) response.error = true;
         else if (result.affectedRows == 1) {
             conn.query("update account set circle_id = (select count(circle.name) from circle) where uid = ?", uid, function (error, updateResult) {
