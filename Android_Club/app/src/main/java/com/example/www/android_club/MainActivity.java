@@ -1,5 +1,6 @@
 package com.example.www.android_club;
 
+import com.example.www.android_club.CirclePlan.CirclePlanActivity;
 import com.example.www.android_club.clubInfo.*;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -35,24 +36,17 @@ public class MainActivity extends AppCompatActivity {
     GridView gridView;
     List<MainData> gridArray=new ArrayList<MainData>();
     MainAdapter gridAdapter;
-    ViewSet viewSet;
-
-
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
 
-            Resources resources = getResources();
-            gridArray.add((new MainData("동아리", resources.getDrawable(R.drawable.loading_page))));
-            gridArray.add((new MainData("d안녕", resources.getDrawable(R.drawable.clubinfo_activity))));
-            gridArray.add((new MainData("동아리", resources.getDrawable(R.drawable.clubinfo_member))));
-            gridArray.add((new MainData("동아리", resources.getDrawable(R.drawable.loading_page))));
-            gridArray.add((new MainData("동아리", resources.getDrawable(R.drawable.loading_page))));
-            gridArray.add((new MainData("동아리", resources.getDrawable(R.drawable.loading_page))));
-            gridArray.add((new MainData("동아리", resources.getDrawable(R.drawable.loading_page))));
-
+            //Resources resources = getResources();사진정보를 가져올때
+            gridArray.add(new MainData("1사람","인원모집","2017-1021"));
+            gridArray.add(new MainData("2사람","프로젝트준비","2017-1021"));
+            gridArray.add(new MainData("3사람","역활분담","2017-1021"));
+            gridArray.add(new MainData("4사람","공부","2017-1021"));
             //데이터베이스에서 들어온 데이터만큼 뿌려줄 예정
 
             gridView = (GridView) findViewById(R.id.gridview);
@@ -60,64 +54,20 @@ public class MainActivity extends AppCompatActivity {
             gridView.setAdapter(gridAdapter);
 
 
-            ImageButton ib = (ImageButton) findViewById(R.id.mypageButton);
-            ib.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getApplicationContext(), myPage_o.class);
-                    startActivity(intent);
-                }
-            });
-
             gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                    Toast.makeText(getApplicationContext(), "" + position, Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), clubInfo.class);
+                    Toast.makeText(getApplicationContext(), gridArray.get(position).getText() + "  해당 index"+position, Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(MainActivity.this, CirclePlanActivity.class);
+                    String writer=gridArray.get(position).getText();
+                    String title=gridArray.get(position).getTitle();
+                    String content=gridArray.get(position).getDate();
+                    intent.putExtra("writer",writer);
+                    intent.putExtra("content",content);
+                    intent.putExtra("title",title);
+
                     startActivity(intent);
                 }
             });
-
-            final EditText editText = (EditText) findViewById(R.id.edit); //검색기능
-            editText.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                }
-
-                @Override
-                public void afterTextChanged(Editable editable) {
-                    String text = editText.getText().toString().toLowerCase(Locale.getDefault());
-                    gridAdapter.filter(text);
-                }
-
-                public void init(){
-                    GridView g = (GridView)findViewById(R.id.gridview);
-                    EditText e = (EditText)findViewById(R.id.edit);
-                    viewSet=new ViewSet(g,e);
-
-                    List list=new ArrayList((Collection) viewSet);
-                    gridAdapter=new MainAdapter(getApplicationContext(),R.layout.activity_row,(ArrayList)list);
-
-
-                }
-            });
         }
-
-    class ViewSet{
-        GridView gridView;
-        EditText editText;
-
-        public ViewSet(){}
-
-        public ViewSet(GridView gridView,EditText editText){
-            this.editText=editText;
-            this.gridView=gridView;
-        }
-    }
 }
 

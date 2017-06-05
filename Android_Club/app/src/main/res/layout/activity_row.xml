@@ -2,18 +2,62 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ImageView
-        android:id="@+id/clubimage"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="작성자:"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="4dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
         />
     <TextView
-        android:id="@+id/clubtext"
+        android:id="@+id/writerPlan"
         android:layout_width="wrap_content"
         android:text="동아리"
-        android:textSize="20dp"
+        android:textSize="12dp"
+        android:textStyle="bold"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="제목:"
+            android:textSize="12dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="4dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            />
+        <TextView
+            android:id="@+id/titlePlan"
+            android:layout_width="wrap_content"
+            android:text="동아리"
+            android:textSize="12dp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/planDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        />
 </LinearLayout>
