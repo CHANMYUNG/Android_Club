@@ -10,31 +10,9 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.www.android_club.MainActivity"
-    android:background="#98CDC5">
+    >
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/mypageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#98CDC5"
-            android:src="@drawable/user" />
-
-        <EditText
-            android:id="@+id/edit"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:hint="동아리 검색"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="검색"/>
-    </LinearLayout>
 
 
     <LinearLayout
@@ -45,15 +23,50 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:background="@color/colorPrimary" />
+            android:src="@drawable/dsmlogo" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:autoText="true"
             android:freezesText="true"
-            android:text="공지사항 텍스트뷰"
+            android:text="동아리 일정 공지"
             android:textSize="30dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/clubView"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:text="동아리 일정 만들기"
+            android:background="#DDDDDDDD"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/clubView"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:text="동아리 일정 삭제"
+            android:background="#DDDDDDDD"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"/>
+
     </LinearLayout>
 
 

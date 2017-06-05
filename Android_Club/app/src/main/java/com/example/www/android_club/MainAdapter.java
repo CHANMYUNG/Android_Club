@@ -51,33 +51,38 @@ public class  MainAdapter extends ArrayAdapter<MainData> {
 
     public View getView(int position, View convertView, ViewGroup parent){
         View row = convertView;
-        ReordHoder holder = null;
+        Content holder = null;
 
         if(row==null){
             LayoutInflater inflater=((Activity)context).getLayoutInflater();
             row=inflater.inflate(layout,parent,false);
 
-            holder=new ReordHoder();
-            holder.textView=(TextView)row.findViewById(R.id.clubtext);
-            holder.imageView=(ImageView)row.findViewById(R.id.clubimage);
+            holder=new Content();
+            holder.textView1=(TextView)row.findViewById(R.id.writerPlan);
+            holder.textView2=(TextView)row.findViewById(R.id.titlePlan) ;
+            holder.textView3=(TextView)row.findViewById(R.id.planDate) ;
             BitmapDrawable bd = null;
 
             MainData m=items.get(position);
 
-            bd = (BitmapDrawable) items.get(position).getImg().getCurrent();
+        /*    bd = (BitmapDrawable) items.get(position).getImg().getCurrent();
             Bitmap bmp= bd.getBitmap();
-            holder.imageView.setImageBitmap(bmp);
-            holder.textView.setText(m.getText());
+            holder.imageView.setImageBitmap(bmp);*/
+            //이미지를 넣는 방식
+            holder.textView1.setText(m.getText());
+            holder.textView2.setText(m.getTitle());
+            holder.textView3.setText(m.getDate());
 
 
         }else{
-            holder=(ReordHoder)row.getTag();
+            holder=(Content) row.getTag();
         }
         return  row;
     }
-    static class ReordHoder{
-        TextView textView;
-        ImageView imageView;
+    static class Content{
+        TextView textView1;
+        TextView textView2;
+        TextView textView3;
     }
 
     public void filter(String charText){
@@ -98,26 +103,36 @@ public class  MainAdapter extends ArrayAdapter<MainData> {
 }
 class MainData{
     private String text;
-    private Drawable img;
+    private String date;
+    private String title;
 
-    public MainData(String text , Drawable img) {
-        this.img = img;
+    public MainData(String text , String title, String  date) {
+        this.date=date;
         this.text = text;
+        this.title=title;
     }
 
     public void setText(String text){
         this.text=text;
     }
 
-    public void setImg(Drawable img){
-        this.img=img;
+    public void setDate(String date){
+        this.date=date;
     }
 
     public String getText() {
         return text;
     }
 
-    public Drawable getImg() {
-        return img;
+    public String getDate() {
+        return date;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

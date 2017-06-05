@@ -79,9 +79,9 @@ public class ClubMyPage extends Fragment {
         CalendarView calendarView = (CalendarView) v.findViewById(R.id.calendar);
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-               /* Toast.makeText(v, "" + year + "/" + (month + 1) + "/" + dayOfMonth, 0).show();
+               Toast.makeText(getActivity(), "" + year + "/" + (month + 1) + "/" + dayOfMonth, 0).show();
                 Intent intent=new Intent(getActivity(), ClubSchedulingActivity.class);
-                startActivity(intent);*/
+                startActivity(intent);
             }
         });
 
@@ -92,6 +92,15 @@ public class ClubMyPage extends Fragment {
                 Intent intent = new Intent(getActivity(), memberListActivity.class);
                 startActivity(intent);
 
+            }
+        });
+
+        Button planButton=(Button)v.findViewById(R.id.planButton);
+        planButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(),MainActivity.class);
+                startActivity(intent);
             }
         });
 
