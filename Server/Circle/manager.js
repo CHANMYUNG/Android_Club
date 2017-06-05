@@ -47,7 +47,7 @@ manager.found = function (name, uid, intro, callback) {
         session: true,
         error: false,
         success: false
-    }
+    };
     let JSONResponse;
     conn.query("insert into circle values((select count(c.name)+1 from circle as c),?,?,?)", [name, uid, intro], function (err, result) {
         if (err) response.error = true;
@@ -57,6 +57,34 @@ manager.found = function (name, uid, intro, callback) {
 
                 else if (updateResult.affectedRows == 1) response.success = true;
 
+                JSONResponse = JSON.stringify(response);
+                callback(JSONResponse);
+            });
+        }
+    });
+}
+
+manager.getCircle = function (circle_id, callback) {
+    let response = {
+        session: true,
+        error: false,
+        leader: null,
+        name: []
+    };
+    let JSONResponse;
+    let leaderNum;
+    conn.query("select name,num from account where num = (select leaderNum from circle where id=?)", circle_id, function (err, rows) {
+        if (err) response.error = true;
+        else if (rows.length == 1) {
+            leaderNum = rows[0].num;
+            response.leader = rows[0].name;
+            conn.query("select name from account where circle_id=? and num != ? order by name", [circle_id, leaderNum], function (err, rows) {
+                if (err) response.error = true;
+                else if (rows.length > 0) {
+                    for (var i = 0; i < rows.length; i++) {
+                        response.name.push(rows[i].name);
+                    }
+                }
                 JSONResponse = JSON.stringify(response);
                 callback(JSONResponse);
             });
