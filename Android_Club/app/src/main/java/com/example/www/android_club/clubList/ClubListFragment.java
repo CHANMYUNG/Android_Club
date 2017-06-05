@@ -1,28 +1,21 @@
 package com.example.www.android_club.clubList;
 
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.icu.lang.UCharacterEnums;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
-import com.example.www.android_club.ClubMyPage;
 import com.example.www.android_club.R;
 
 import org.json.JSONArray;
@@ -31,7 +24,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -53,8 +45,7 @@ public class ClubListFragment extends Fragment {
     private JSONArray circles;
     private ListView clubList;
     private ClubListAdapter adapter;
-    private ArrayList<Club> clubs = new ArrayList<>();
-    private Club club;
+    private ArrayList<Club> clubs;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -63,7 +54,8 @@ public class ClubListFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     public ClubListFragment() {
-        // Required empty public constructor
+        // Required empty public constructor\
+        Log.d("******************","ClubListFragment()");
     }
 
     /**
@@ -86,37 +78,66 @@ public class ClubListFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-    }
+      /*  aq = new AQuery(getActivity());
 
-    private List<Club> getCircles() {
-        aq = new AQuery(getActivity());
         Map<String, Object> params = new HashMap<>();
-        aq.ajax("http://13.124.15.202:80/circle/getCircles", params, String.class, new AjaxCallback<String>(){
+        aq.ajax("http://13.124.15.202:80/circle/getCircleInfos", params, String.class, new AjaxCallback<String>(){
             @Override
-            public void callback(String url, String response /* ResponseType responseValue */, AjaxStatus status)
+            public void callback(String url, String response *//* ResponseType responseValue *//*, AjaxStatus status)
             {
+                Toast.makeText(getActivity(),response,Toast.LENGTH_SHORT).show();
                 try {
                     JSONObject object = new JSONObject(response);
                     if(object.getBoolean("error")) {
                         Toast.makeText(getActivity(), "에러발생", Toast.LENGTH_SHORT).show();
                         return;
                     }else {
-                        JSONArray circles = object.getJSONArray("circles");
+                        JSONArray circles = object.getJSONArray("infos");
                         for (int i = 0; i < circles.length(); i++) {
                             JSONObject circle = (JSONObject) circles.get(i);
-                            clubs.add(new Club(R.drawable.dsmlogo, circle.getString("name"), Integer.toString(circle.getInt("leader")), circle.getInt("size")));
+                            clubs.add(new Club(R.drawable.dsmlogo, circle.getString("name"), circle.getString("leader"), circle.getInt("size")));
                         }
                     }
                 } catch (JSONException e) {
                     Toast.makeText(getActivity(), "ERROR", Toast.LENGTH_SHORT).show();
                     Toast.makeText(getActivity(), e.getStackTrace().toString() , Toast.LENGTH_SHORT).show();
                 }
+
+            }
+        });*/
+    }
+
+    public ArrayList<Club> getCircles() {
+        clubs=new ArrayList<>();
+        aq = new AQuery(getActivity());
+        Map<String, Object> params = new HashMap<>();
+        aq.ajax("http://13.124.15.202:80/circle/getCircleInfos", params, String.class, new AjaxCallback<String>(){
+            @Override
+            public void callback(String url, String response  /*ResponseType responseValue*/ , AjaxStatus status)
+            {
+                Toast.makeText(getActivity(),response,Toast.LENGTH_SHORT).show();
+                try {
+                    JSONObject object = new JSONObject(response);
+                    if(object.getBoolean("error")) {
+                        Toast.makeText(getActivity(), "에러발생", Toast.LENGTH_SHORT).show();
+                        return;
+                    }else {
+                        JSONArray circles = object.getJSONArray("infos");
+                        for (int i = 0; i < circles.length(); i++) {
+                            JSONObject circle = (JSONObject) circles.get(i);
+                            clubs.add(new Club(R.drawable.dsmlogo, circle.getString("name"), circle.getString("leader"), ((JSONObject) circles.get(i)).getInt("size")));
+                        }
+                    }
+                } catch (JSONException e) {
+                    Toast.makeText(getActivity(), "ERROR", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), e.getStackTrace().toString() , Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
         return clubs;
@@ -124,14 +145,13 @@ public class ClubListFragment extends Fragment {
 
 
     private ClubListAdapter clubListAdapter;
-    private ArrayList<Club> items;
     private ArrayList<Club> saveItems=new ArrayList<>();
     private View v;
+    private ArrayList<Club> items;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View v=inflater.inflate(R.layout.fragment_clublist,container,false);
         circleList(v);
         doSearch(v);
@@ -140,7 +160,6 @@ public class ClubListFragment extends Fragment {
     }
 
     private void doSearch(View v){
-
         final EditText circleSearchEditText=(EditText)v.findViewById(R.id.searchCircleEdit);
 
         circleSearchEditText.addTextChangedListener(new TextWatcher() {
@@ -164,12 +183,45 @@ public class ClubListFragment extends Fragment {
     }
 
     private  void circleList(View v){
-        items=new ArrayList<>();
-        items.addAll(getCircles());
-        saveItems.addAll(items);
+        items= new ArrayList<>();
+        aq = new AQuery(getActivity());
         clubList=(ListView) v.findViewById(R.id.clubListView);
-        clubListAdapter=new ClubListAdapter(getActivity().getApplicationContext(),R.id.notice,items);
-        clubList.setAdapter(clubListAdapter);
+        Map<String, Object> params = new HashMap<>();
+        aq.ajax("http://13.124.15.202:80/circle/getCircleInfos", params, String.class, new AjaxCallback<String>(){
+            @Override
+            public void callback(String url, String response  /*ResponseType responseValue*/ , AjaxStatus status)
+            {
+                Toast.makeText(getActivity(),response,Toast.LENGTH_SHORT).show();
+                try {
+                    JSONObject object = new JSONObject(response);
+                    if(object.getBoolean("error")) {
+                        //Toast.makeText(getActivity(), "에러발생", Toast.LENGTH_SHORT).show();
+                        return;
+                    }else {
+                        JSONArray circles = object.getJSONArray("infos");
+
+                        for (int i = 0; i < circles.length(); i++) {
+
+                            JSONObject circle = (JSONObject) circles.get(i);
+                            String name=circle.getString("name");
+                            String leader=circle.getString("leader");
+                            int size=circle.getInt("size");
+                            items.add(new Club(R.drawable.dsmlogo,name,leader,size));
+                        }
+                        clubListAdapter=new ClubListAdapter(getActivity().getApplicationContext(),R.id.notice,items);
+                        clubList.setAdapter(clubListAdapter);
+                    }
+                } catch (JSONException e) {
+                    Toast.makeText(getActivity(), "ERROR", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), e.getStackTrace().toString() , Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        saveItems.addAll(items); //검색을 위한 리스트
+
+        //clubListAdapter=new ClubListAdapter(getActivity().getApplicationContext(),R.id.notice,items);
+        //clubList.setAdapter(clubListAdapter);
     }
 
     public void filter(String searchText){
@@ -187,24 +239,6 @@ public class ClubListFragment extends Fragment {
         }
         clubListAdapter.notifyDataSetChanged();
     }
-   /* public void searchCircle( String searchText){
-        saveItems.clear();
-        if(searchText.length()==0){
-            saveItems.addAll(items);
-        }else{
-            for(Club club:items){
-                if(club.getClubName().contains(searchText)){
-                    saveItems.add(club);
-                }
-            }
-        }
-        clubListAdapter.notifyDataSetChanged();
-    }*/
-
-
-    /*public void addItem(int icon,String clubName,String reader,int num){
-        adapter
-    }*/
 
 
 
