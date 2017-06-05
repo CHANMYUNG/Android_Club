@@ -63,7 +63,7 @@ public class ClubListAdapter extends ArrayAdapter<Club> {
         if(currentPosition != null) {
             clubIcon.setImageResource(clubList.get(i).getImage());
             clubNameText.setText(clubList.get(i).getClubName());
-            clubReader.setText(clubList.get(i).getReader());
+            clubReader.setText(clubList.get(i).getLeader());
             clubMemberNum.setText(String.valueOf(clubList.get(i).getMemberNum()));//int 값을 넘겨주면 id값하고 헷갈리기 때문에 String 형식으로 넘겨줘야함
 
             v.setTag(clubList.get(i).getClubName());
