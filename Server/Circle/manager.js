@@ -94,4 +94,43 @@ manager.getCircle = function (circle_id, callback) {
     });
 }
 
-module.exports = manager;
+manager.addCirclePlan = function (circle_id, writer, contents, plan_date, callback) {
+    let response = {
+        session: true,
+        error: false,
+        success: false
+    };
+
+    conn.query("insert into circle_plan values(?,?,?,?)", [circle_id, writer, contents, plan_date], function (err, insertresult) {
+        console.log(insertresult.affectedRows);
+        if (err) response.error = true;
+        else if (insertresult.affectedRows == 1) response.success = true;
+
+        callback(JSON.stringify(response));
+    });
+}
+
+manager.getCirclePlan = function (circle_id, callback) {
+    let response = {
+        session: true,
+        error: false,
+        writer: [],
+        contents: [],
+        plan_date: []
+    };
+
+    conn.query("select * from circle_plan where circle_id = ?", circle_id, function (err, rows) {
+        if (err) response.error = true;
+        else if (rows.length >= 0) {
+            for (var i = 0; i < rows.length; i++) {
+                response.writer[i] = rows[i].writer;
+                response.contents[i] = rows[i].contents;
+                response.plan_date[i] = rows[i].plan_date;
+            }
+        }
+
+        callback(JSON.stringify(response));
+    });
+}
+
+module.exports = manager;   
