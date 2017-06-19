@@ -102,4 +102,19 @@ router.route('/circle/getCirclePlan').post(function (req, res) {
     });
 });
 
+router.route('/circle/counts').get(function (req, res) {
+    if (!req.session.user) {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.write(JSON.stringify({
+            session: false
+        }));
+        res.end();
+        return;
+    }
+    manager.getCounts(function (JSONResponse) {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.write(JSONResponse);
+        res.end();
+    });
+});
 module.exports = router;

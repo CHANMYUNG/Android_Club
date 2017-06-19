@@ -133,4 +133,21 @@ manager.getCirclePlan = function (circle_id, callback) {
     });
 }
 
+manager.getCounts = function (callback) {
+    let response = {
+        session: true,
+        error: false,
+        counts: 0
+    };
+
+    conn.query("select * from circle", function (err, rows) {
+        if (err) response.error = true;
+        else if (rows.length >= 0) {
+            response.counts = rows.length;
+        }
+
+        callback(JSON.stringify(response));
+    });
+}
+
 module.exports = manager;   
