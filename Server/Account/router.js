@@ -1,4 +1,3 @@
-
 let router = require('express').Router();
 let manager = require('./manager');
 
@@ -87,12 +86,11 @@ router.route('/account/logout').post(function (req, res) {
         res.write(JSON.stringify(response));
         res.end();
     }
-
 });
 
 router.route('/account/getUserInfo').post(function (req, res) {
     if (!req.session.user) {
-        res.writeHead(200, { 'Content-Type': 'application/json' }); 
+        res.writeHead(200, { 'Content-Type': 'application/json' });
         res.write(JSON.stringify({
             session: false
         }));
