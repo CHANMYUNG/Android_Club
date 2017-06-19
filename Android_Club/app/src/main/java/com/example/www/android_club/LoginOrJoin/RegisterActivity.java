@@ -1,10 +1,16 @@
 package com.example.www.android_club.LoginOrJoin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
+import com.androidquery.AQuery;
 import com.example.www.android_club.R;
 
 /**
@@ -15,6 +21,15 @@ public class RegisterActivity extends AppCompatActivity {
 
     private ArrayAdapter adapter;
     private Spinner spinner;
+    AQuery aq;
+
+    EditText idEditText=(EditText)findViewById(R.id.joinId);
+    EditText passwordEditText=(EditText)findViewById(R.id.joinPassword);
+    EditText emailEditText=(EditText)findViewById(R.id.joinEmail);
+    EditText serialKeyEditText=(EditText)findViewById(R.id.serialKey);
+    TextView backLoginView=(TextView)findViewById(R.id.backLoginView);
+
+    Button joinRegisterButton=(Button)findViewById(R.id.registerCheckButton);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +37,24 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
 
-//        setSpinnerItemGrade(spinner);
-//        setSpinnerItemClass(spinner);
-//        setSpinnerItemClassNum(spinner);
+
+
+        joinRegisterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        backLoginView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(RegisterActivity.this,LoginActivity.class);
+                RegisterActivity.this.startActivity(intent);
+                finish();
+            }
+        });
+
+
 
 
 

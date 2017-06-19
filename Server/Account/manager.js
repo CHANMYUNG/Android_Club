@@ -7,7 +7,7 @@ manager.serialCheck = function (serial, callback) {
         error: false,
         available: false
     };
-    
+
     conn.query("select * from account where uid=? and id is null and password is null", serial, function (err, rows) {
         if (err) {
             response.error = true;
@@ -23,7 +23,7 @@ manager.idCheck = function (id, callback) {
         error: false,
         available: false
     };
-    
+
     conn.query("select * from account where id=?", id, function (err, rows) {
         if (err) {
             response.error = true;
@@ -39,7 +39,7 @@ manager.emailCheck = function (email, callback) {
         error: false,
         available: false
     };
-    
+
     conn.query("select * from account where email=?", email, function (err, rows) {
         if (err) {
             response.error = true;
@@ -106,7 +106,7 @@ manager.getUserInfo = function (uid, callback) {
         user: null,
         circle: null
     };
-    
+
     conn.query("select a.name, c.name as circle from account as a inner join  circle as c on a.circle_id = c.id where a.uid = ?", uid, function (err, rows) {
         if (err) {
             response.error = true;
