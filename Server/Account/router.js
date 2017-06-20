@@ -51,6 +51,7 @@ router.route('/account/signUp').post(function (req, res) {
 router.route('/account/login').post(function (req, res) {
     let id = req.body.id;
     let password = req.body.password;
+
     manager.login(id, password, function (response) {
         if (response.success) {
             req.session.user = {
@@ -88,7 +89,7 @@ router.route('/account/logout').post(function (req, res) {
     }
 });
 
-router.route('/account/getUserInfo').post(function (req, res) {
+router.route('/account/UserInfo').get(function (req, res) {
     if (!req.session.user) {
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.write(JSON.stringify({

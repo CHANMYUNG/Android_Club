@@ -63,7 +63,7 @@ router.route('/circle/getCircle').post(function (req, res) {
     })
 });
 
-router.route('/circle/addCirclePlan').post(function (req, res) {
+router.route('/circle/addCirclePlan/:a').post(function (req, res) {
     if (!req.session.user) {
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.write(JSON.stringify({
