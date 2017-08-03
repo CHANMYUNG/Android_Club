@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                                     return;
                                 } else {
                                     Toast.makeText(getApplicationContext(),response.toString(), Toast.LENGTH_SHORT).show();
-                                    if (object.getBoolean("success") == true) {
+                                    if (object.getBoolean("success")) {
 
                                         AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                                         Dialog dialog = builder.setMessage("로그인에 성공했습니다").setPositiveButton("okay", null).create();
