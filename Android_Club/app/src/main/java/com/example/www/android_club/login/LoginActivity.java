@@ -20,7 +20,7 @@ import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 import com.example.www.android_club.cookie.Cookie;
 import com.example.www.android_club.R;
-import com.example.www.android_club.main.MainActivity;
+import com.example.www.android_club.activities.MainActivity;
 import com.example.www.android_club.Join.RegisterActivity;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -55,15 +55,13 @@ public class LoginActivity extends AppCompatActivity {
         final EditText editTextPassword=(EditText)findViewById(R.id.password);
 
 
-
-
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    String id=editTextId.getText().toString().trim();
-                    String password=editTextPassword.getText().toString().trim();
+                String id = editTextId.getText().toString();
+                String password = editTextPassword.getText().toString();
 
-             if (id.length() == 0 || password.length() == 0  ) {
+                if (id.length() == 0 || password.length() == 0) {
                     //아이디 비밀번호를 입력을 안한 경우
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                     Dialog dialog = builder.setMessage("올바른 아이디 비밀번호을 입력 해주세요").setNegativeButton("다시시도", null).create();
@@ -72,9 +70,9 @@ public class LoginActivity extends AppCompatActivity {
                     // 정상적으로 입력한 경우
                     aq = new AQuery(loginButton);
                     Map<String, Object> params = new HashMap<>();
-                    params.put("id",id);
-                    params.put("password",password);
-                    aq.ajax("http://13.124.15.202:80/account/activity_join", params, String.class, new AjaxCallback<String>() {
+                    params.put("id", id);
+                    params.put("password", password);
+                    aq.ajax("http://13.124.15.202:80/account/activity_login", params, String.class, new AjaxCallback<String>() {
 
                         @Override
                         public void callback(String url, String response /* ResponseType responseValue */, AjaxStatus status) {
@@ -85,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(), "잠시후에 시도해주세요", Toast.LENGTH_SHORT).show();
                                     return;
                                 } else {
-                                    Toast.makeText(getApplicationContext(),response.toString(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
                                     if (object.getBoolean("success")) {
 
                                         AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);

@@ -13,7 +13,7 @@ import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 import com.example.www.android_club.R;
-import com.example.www.android_club.main.MainActivity;
+import com.example.www.android_club.activities.MainActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;

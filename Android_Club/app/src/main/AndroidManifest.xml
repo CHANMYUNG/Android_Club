@@ -8,41 +8,33 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".login.LoginActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-     <!--   <activity android:name=".myPage.myPage_x">
+        <!--   <activity android:name=".myPage.myPage_x">
 
-        </activity>-->
-       <!-- <activity android:name=".clubInfo.clubInfo">
+           </activity>-->
+        <!-- <activity android:name=".clubInfo.clubInfo">
 
-        </activity>-->
-        <activity android:name=".signUp.SignUpActivity">
+         </activity>-->
 
-        </activity>
+        <!-- <activity android:name=".myPage.myPage_o">
 
-       <!-- <activity android:name=".myPage.myPage_o">
+         </activity>-->
 
-        </activity>-->
-        <activity android:name=".circleMemberList.memberListActivity">
-
-        </activity>
 
         <activity android:name=".circlePlan.PlanActivity">
 
         </activity>
 
-        <activity android:name=".Scheduling.ClubSchedulingActivity">
 
-        </activity>
 
-        <activity android:name=".main.MainActivity">
 
-        </activity>
+
 
         <activity android:name=".circleCreatePage.CircleCreateActivity">
 
