@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
         recyclerView=(RecyclerView)findViewById(R.id.main_recyclerView);
         layoutManager=new LinearLayoutManager(this);
 
@@ -51,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     public ArrayList<String> getMainList(){
         mainList=new ArrayList<>();
-        mainList.add("공지사항");
+
         mainList.add("동아리 관리");
         mainList.add("동아리 모집");
         mainList.add("마이 페이지");
