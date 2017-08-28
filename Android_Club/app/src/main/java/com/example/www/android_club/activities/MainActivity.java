@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -39,8 +40,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         recyclerView=(RecyclerView)findViewById(R.id.main_recyclerView);
         layoutManager=new LinearLayoutManager(this);
-
-
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(new MainAdapter(this,getMainList()));
 
