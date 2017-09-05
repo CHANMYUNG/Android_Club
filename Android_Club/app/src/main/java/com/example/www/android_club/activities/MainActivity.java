@@ -39,11 +39,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView=(RecyclerView)findViewById(R.id.main_recyclerView);
-        layoutManager=new LinearLayoutManager(this);
+        layoutManager=new GridLayoutManager(this,2);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(new MainAdapter(this,getMainList()));
-
-
     }
 
     public ArrayList<String> getMainList(){
