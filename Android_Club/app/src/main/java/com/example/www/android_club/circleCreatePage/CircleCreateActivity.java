@@ -13,7 +13,7 @@ import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 import com.example.www.android_club.R;
-import com.example.www.android_club.main.MainActivity;
+import com.example.www.android_club.activity.MainActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -49,8 +49,9 @@ public class CircleCreateActivity extends AppCompatActivity {
                 String circleContent = editTextCircleContent.getText().toString();
 
                 Map<String, Object> params = new HashMap<>();
-                params.put("circleName", circleName);
-                params.put("circleContent", circleContent);
+               /* params.put("uid",);
+                params.put("name", circleName);
+                params.put("intro", circleContent);*/
                 aq.ajax("http://13.124.15.202:80/", params, String.class, new AjaxCallback<String>() {
                     @Override
                     public void callback(String url, String response, AjaxStatus status) {

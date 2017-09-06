@@ -14,23 +14,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
-import com.example.www.android_club.cookie.Cookie;
 import com.example.www.android_club.R;
-import com.example.www.android_club.main.MainActivity;
+import com.example.www.android_club.activity.MainActivity;
 import com.example.www.android_club.Join.RegisterActivity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-
+    List<String> list=new ArrayList<>();
     private AQuery aq;
     Dialog dialog;
     @Override
@@ -71,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     // 정상적으로 입력한 경우
                     aq = new AQuery(loginButton);
-                    Map<String, Object> params = new HashMap<>();
+                    final Map<String, Object> params = new HashMap<>();
                     params.put("id",id);
                     params.put("password",password);
                     aq.ajax("http://13.124.15.202:80/account/activity_join", params, String.class, new AjaxCallback<String>() {
@@ -79,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void callback(String url, String response /* ResponseType responseValue */, AjaxStatus status) {
                             try {
-                                List<Cookie> cookiesList;
+
                                 JSONObject object = new JSONObject(response);
                                 if (object.getBoolean("error")) {
                                     Toast.makeText(getApplicationContext(), "잠시후에 시도해주세요", Toast.LENGTH_SHORT).show();
@@ -87,9 +86,12 @@ public class LoginActivity extends AppCompatActivity {
                                 } else {
                                     Toast.makeText(getApplicationContext(),response.toString(), Toast.LENGTH_SHORT).show();
                                     if (object.getBoolean("success") == true) {
-
+                               /*         List<Cookie> cookies
+                                        cookies= Http*/
                                         AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                                         Dialog dialog = builder.setMessage("로그인에 성공했습니다").setPositiveButton("okay", null).create();
+
+
                                         dialog.show();
                                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 

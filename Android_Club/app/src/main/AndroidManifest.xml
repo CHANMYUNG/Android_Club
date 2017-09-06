@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".login.LoginActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,14 +21,11 @@
        <!-- <activity android:name=".clubInfo.clubInfo">
 
         </activity>-->
-        <activity android:name=".signUp.SignUpActivity">
-
-        </activity>
 
        <!-- <activity android:name=".myPage.myPage_o">
 
         </activity>-->
-        <activity android:name=".circleMemberList.memberListActivity">
+        <activity android:name=".circleMemberList.MemberListActivity">
 
         </activity>
 
@@ -36,14 +33,11 @@
 
         </activity>
 
-        <activity android:name=".Scheduling.ClubSchedulingActivity">
+
+ <!--       <activity android:name=".main.MainActivity">
 
         </activity>
-
-        <activity android:name=".main.MainActivity">
-
-        </activity>
-
+-->
         <activity android:name=".circleCreatePage.CircleCreateActivity">
 
         </activity>
