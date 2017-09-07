@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.www.android_club">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,35 +17,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--   <activity android:name=".myPage.myPage_x">
+        <!--
+           <activity android:name=".myPage.myPage_x">
 
-           </activity>-->
-        <!-- <activity android:name=".clubInfo.clubInfo">
+           </activity>
+        -->
+        <!--
+         <activity android:name=".clubInfo.clubInfo">
 
-         </activity>-->
-
-        <!-- <activity android:name=".myPage.myPage_o">
-
-         </activity>-->
-
-
-        <activity android:name=".circlePlan.PlanActivity">
-
-        </activity>
+         </activity>
+        -->
 
 
+        <!--
+         <activity android:name=".myPage.myPage_o">
 
+         </activity>
+        -->
 
-
-
-        <activity android:name=".circleCreatePage.CircleCreateActivity">
-
-        </activity>
-
-        <activity android:name=".circlePlan.CirclePlanActivity">
-
-        </activity>
+        <activity android:name=".circlePlan.PlanActivity"></activity>
+        <activity android:name=".circleCreatePage.CircleCreateActivity"></activity>
+        <activity android:name=".circlePlan.CirclePlanActivity"></activity>
+        <activity android:name=".activities.CircleCollectActivity"></activity>
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

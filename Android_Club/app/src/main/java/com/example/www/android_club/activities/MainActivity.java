@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
@@ -35,24 +36,23 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<String> mainList;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView recyclerView;
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView=(RecyclerView)findViewById(R.id.main_recyclerView);
         layoutManager=new GridLayoutManager(this,2);
+        setToolbar();
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(new MainAdapter(this,getMainList()));
+        recyclerView.setAdapter(new MainAdapter(this));
     }
 
-    public ArrayList<String> getMainList(){
-        mainList=new ArrayList<>();
-
-        mainList.add("동아리 관리");
-        mainList.add("동아리 모집");
-        mainList.add("마이 페이지");
-
-        return  mainList;
+    public void setToolbar(){
+        ImageView tv_ib=(ImageView)findViewById(R.id.ib_toolbar_menu);
+        tv_ib.setImageResource(R.drawable.ic_menu_black_24dp);
     }
+
 
 
 
