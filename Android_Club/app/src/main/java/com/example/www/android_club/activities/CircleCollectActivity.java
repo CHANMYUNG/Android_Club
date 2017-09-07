@@ -1,6 +1,10 @@
 package com.example.www.android_club.activities;
 
 import android.media.Image;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -19,9 +23,26 @@ public class CircleCollectActivity extends AppCompatActivity {
 
     public void setToolbar(){
         ImageView tv_ib=(ImageView)findViewById(R.id.ib_toolbar_menu);
-        tv_ib.setImageResource(R.drawable.back);
+        tv_ib.setImageResource(R.drawable.ic_arrow_back_black_24dp);
 
         TextView textView=(TextView)findViewById(R.id.tv_toolbar_title);
         textView.setText("동아리 모집");
+    }
+
+    private class PagerAdapter extends FragmentStatePagerAdapter{
+
+        public PagerAdapter(FragmentManager fm){
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public int getCount() {
+            return 0;
+        }
     }
 }

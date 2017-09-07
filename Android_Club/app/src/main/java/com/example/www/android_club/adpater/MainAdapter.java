@@ -49,7 +49,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
                 holder.main_category_image.setImageResource(R.drawable.application);
                 holder.main_category_layout.setBackgroundColor(Color.parseColor("#f4b06e"));
                 params.setMargins(15, 15, 15, 15);
-                holder.main_category_title.setOnClickListener(new View.OnClickListener() {
+                holder.main_category_card.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent=new Intent(context,CircleCollectActivity.class);
