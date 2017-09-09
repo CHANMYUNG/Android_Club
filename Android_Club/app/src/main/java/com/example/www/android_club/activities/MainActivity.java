@@ -7,6 +7,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,6 +19,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ToggleButton;
 
 import com.example.www.android_club.DividerItemDecoration;
 import com.example.www.android_club.adpater.MainAdapter;
@@ -42,9 +45,11 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private DrawerLayout mDrawerLayout;
     private ImageView tv_ib;
+    private ActionBarDrawerToggle toggle;
 
 
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView=(RecyclerView)findViewById(R.id.main_recyclerView);
@@ -53,11 +58,12 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(new MainAdapter(this));
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.navigationView);
+     /*   NavigationView navigationView = (NavigationView) findViewById(R.id.navigationView);
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
-        mDrawerLayout=new 
+        toggle=new ActionBarDrawerToggle(this,mDrawerLayout,R.string.app_name,R.string.app_name);
+        mDrawerLayout.addDrawerListener(toggle);*/
     }
 
     public void setToolbar(){
