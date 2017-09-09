@@ -26,7 +26,7 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.3.0'
     compile 'com.jakewharton:butterknife:8.5.1'
-    compile 'com.android.support:design:22.2.0'
+    compile 'com.android.support:design:25.3.1'
     compile 'com.googlecode.android-query:android-query:0.25.9'
     compile 'com.ssomai:android.scalablelayout:2.1.1'
     compile 'com.android.support:support-v4:25.3.0'

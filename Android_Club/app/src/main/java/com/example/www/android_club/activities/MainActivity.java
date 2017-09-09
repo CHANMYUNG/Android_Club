@@ -57,9 +57,9 @@ public class MainActivity extends AppCompatActivity {
         setToolbar();
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(new MainAdapter(this));
+        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
 
      /*   NavigationView navigationView = (NavigationView) findViewById(R.id.navigationView);
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
         toggle=new ActionBarDrawerToggle(this,mDrawerLayout,R.string.app_name,R.string.app_name);
