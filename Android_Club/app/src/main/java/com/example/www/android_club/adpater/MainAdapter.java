@@ -48,7 +48,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
                 holder.main_category_title.setTextColor(Color.parseColor("#ffffff"));
                 holder.main_category_image.setImageResource(R.drawable.application);
                 holder.main_category_layout.setBackgroundColor(Color.parseColor("#f4b06e"));
-                params.setMargins(15, 15, 15, 15);
+                params.setMargins(8,0 , 8, 0);
                 holder.main_category_card.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -62,7 +62,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
                 holder.main_category_image.setImageResource(R.drawable.dmscircles);
                 holder.main_category_title.setTextColor(Color.parseColor("#ffffff"));
                 holder.main_category_card.setBackgroundColor(Color.parseColor("#f4b06e"));
-                params.setMargins(15, 15, 15, 15);
+                params.setMargins(8,0 , 8, 0);
                 break;
         }
 

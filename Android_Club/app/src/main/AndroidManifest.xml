@@ -11,6 +11,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".activities.MainActivity">
+
+        </activity>
+
+        <activity android:name=".circlePlan.PlanActivity" />
+        <activity android:name=".circleCreatePage.CircleCreateActivity" />
+        <activity android:name=".circlePlan.CirclePlanActivity" />
+        <activity android:name=".activities.CircleCollectActivity" />
+        <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,10 +43,7 @@
          </activity>
         -->
 
-        <activity android:name=".circlePlan.PlanActivity"></activity>
-        <activity android:name=".circleCreatePage.CircleCreateActivity"></activity>
-        <activity android:name=".circlePlan.CirclePlanActivity"></activity>
-        <activity android:name=".activities.CircleCollectActivity"></activity>
+
     </application>
 
 </manifest>
