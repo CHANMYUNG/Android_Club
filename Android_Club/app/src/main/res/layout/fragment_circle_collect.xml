@@ -19,7 +19,7 @@
                 android:layout_height="50dp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/ic_add_black_24dp"
+                android:src="@drawable/ic_add_black_24dp"
                 />
 
             <LinearLayout
