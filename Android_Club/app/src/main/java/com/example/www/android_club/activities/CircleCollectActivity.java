@@ -12,7 +12,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.www.android_club.DensityConverter;
 import com.example.www.android_club.R;
+import com.example.www.android_club.ZoomOutPageTransformer;
 import com.example.www.android_club.adpater.CircleCollectPagerAdapter;
 
 public class CircleCollectActivity extends AppCompatActivity {
@@ -23,8 +25,11 @@ public class CircleCollectActivity extends AppCompatActivity {
         setContentView(R.layout.activity_circle_collect);
         backButton();
         setToolbar();
-
         ViewPager viewPager =(ViewPager)findViewById(R.id.circle_collect_viewpager);
+
+        viewPager.setPageMargin((int) DensityConverter.dpToPx(getApplicationContext(), 16));
+        viewPager.setOffscreenPageLimit(3);
+        viewPager.setPageTransformer(false, new ZoomOutPageTransformer());
         viewPager.setAdapter(new CircleCollectPagerAdapter(getSupportFragmentManager()));
 
     }
